@@ -1,10 +1,12 @@
 package TestO;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import owner.Announce;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -14,13 +16,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import owner.User;
+import owner.*;
 
 
 public class TestPhotos {
 	ArrayList<Announce> A=new ArrayList<Announce>();
 	Announce b;
-	ArrayList<BufferedImage>c;
+	ArrayList<Image>c=new ArrayList<Image>();
 	User e=new User();
 	@Given("I am a registered as owner on Sakancom")
 	public void i_am_a_registered_as_owner_on_sakancom() {
@@ -40,16 +42,17 @@ public class TestPhotos {
 	}
 	@When("I upload photos of my private residence")
 	public void i_upload_photos_of_my_private_residence() {
-		BufferedImage d;
+		Image d;
 		try {
-			d = ImageIO.read(new File("D:\\UB\\summer 2023\\Softwre Engineering\\images"));
+			d =ImageIO.read(new File("D:\\UB\\summer 2023\\Softwre Engineering\\images.jpg"));
 			c.add(d);
 			int indx=c.size()-1;
-			assertTrue(c.get(indx)==d);
+			assertTrue(c.get(indx).equals(d)==true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.print("picture is not found");
+			assertFalse(true);
 		}
 		
 	}
