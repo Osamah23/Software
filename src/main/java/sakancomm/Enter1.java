@@ -92,8 +92,8 @@ static boolean B=false;
         switch (s21)
         {
         case "1":
-return V;
-	case "2":
+return true;
+		case "2":
           return  true;
    	case "3":
         return  true;
@@ -151,7 +151,7 @@ return V;
                          HousingDataProvider.displayBookedHousesInfo();
                          // Save the booked house information
                          HousingDataProvider. addBookedHouseInfo(
-                             User1.getuser(),
+                            // User1.getuser(),
                              houseId,
                              housingUnit.getOwnerName(),
                              housingUnit.getOwnerNumber()

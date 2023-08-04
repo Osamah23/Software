@@ -5,7 +5,7 @@ import io.cucumber.java.en.When;
 import sakancomm.Enter1;
 
 public class Tenant {
-	boolean t;
+	boolean t=false;
 	@When("user enter input <{string}>")
 	public void user_enter_input(String string) {
 	//	Enter1.tenant();

@@ -117,9 +117,9 @@ public class HousingDataProvider {
                 booked = true;
                 String ownerName = housingUnit.getOwnerName();
                 String ownerNumber = housingUnit.getOwnerNumber();
-                String userName = User1.getuser();
+               // String userName = User1.getUserName();
                 
-                String bookedHouseInfoO = "House ID: " + houseId + ", Owner Name: " + ownerName + ", Owner Number: " + ownerNumber + ", User Name: " + userName;
+                String bookedHouseInfoO = "House ID: " + houseId + ", Owner Name: " + ownerName + ", Owner Number: " + ownerNumber; //+ ", User Name: " + userName;
                 bookedHouseInfo.add(bookedHouseInfoO);
                 
             } else if (availability.equalsIgnoreCase("no")) {
@@ -143,8 +143,8 @@ public class HousingDataProvider {
             System.out.println(booking);
         }
     }
-    public static void addBookedHouseInfo(String userName, String houseId, String ownerName, String ownerNumber) {
-        String info = "Username: " + userName + ", House ID: " + houseId + ", Owner Name: " + ownerName + ", Owner Number: " + ownerNumber;
+    public static void addBookedHouseInfo( String houseId, String ownerName, String ownerNumber) {
+        String info =  " House ID: " + houseId + ", Owner Name: " + ownerName + ", Owner Number: " + ownerNumber;
         bookedHouseInfo.add(info);
     }
     // Methods for navigating back to tenant page
@@ -193,7 +193,7 @@ public class HousingDataProvider {
     }
     public static boolean backing(String string) {
         if (string.equals("0")) { // Use equals() for string comparison
-            Enter1.tenant();
+            
             back = true;
         }
         return back;
