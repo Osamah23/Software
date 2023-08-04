@@ -11,6 +11,7 @@ public class HousingDataProvider {
     private static List<String> bookedHouses = new ArrayList<>();
 	private static boolean back=false;
 	private static boolean booked;
+    private static List<String> bookedHouseInfo = new ArrayList<>();
 
     // Constructor to initialize availableHousingUnits with sample data
     public HousingDataProvider() {
@@ -21,6 +22,25 @@ public class HousingDataProvider {
                 Arrays.asList("C", "Nablus", "200", "Parking, Gym, Pet-friendly", "https://example.com/house3/pic1", "no", "1 room", "hayaa", "055322")
         );
         availableHousingUnits.addAll(housingUnitData);
+    }
+   
+
+    public static void displayAvailableHousingUnits() {
+        System.out.println(" Housing Units:");
+        System.out.println("--------------------------");
+
+        for (List<String> housing : availableHousingUnits) {
+            System.out.println("House ID: " + housing.get(0));
+            System.out.println("Location: " + housing.get(1));
+            System.out.println("Price: $" + housing.get(2));
+            System.out.println("Services: " + housing.get(3));
+            System.out.println("Pictures: " + housing.get(4));
+           // System.out.println("Available: " + housing.get(5));
+            System.out.println("Number Of Rooms: " + housing.get(6));
+           // System.out.println("Owner Name: " + housing.get(7));
+            //System.out.println("Owner Number: " + housing.get(8));
+            System.out.println("--------------------------");
+        }
     }
 
     // Methods to get data and details of available housing units
@@ -54,10 +74,10 @@ public class HousingDataProvider {
             System.out.println("Price: $" + housingUnit.getPrice());
             System.out.println("Services: " + housingUnit.getServices());
             System.out.println("Pictures: " + housingUnit.getPictures());
-            System.out.println("Available: " + housingUnit.getAvailable());
+            //System.out.println("Available: " + housingUnit.getAvailable());
             System.out.println("Number Of Rooms: " + housingUnit.getNumberOfRooms());
-            System.out.println("Owner Name: " + housingUnit.getOwnerName());
-            System.out.println("Owner Number: " + housingUnit.getOwnerNumber());
+           // System.out.println("Owner Name: " + housingUnit.getOwnerName());
+          //  System.out.println("Owner Number: " + housingUnit.getOwnerNumber());
             System.out.println("--------------------------");
             return true;
         } else {
@@ -87,6 +107,7 @@ public class HousingDataProvider {
 
     // Methods for booking a house
     public static void bookHouse(String houseId, String availability) {
+    	
         Housing housingUnit = getHousingUnitById(houseId);
         if (housingUnit != null) {
             if (availability.equalsIgnoreCase("yes")) {
@@ -94,6 +115,13 @@ public class HousingDataProvider {
                 // bookedHouses.add("Username: " + User1.getUserName() + ", House ID: " + houseId);
                 System.out.println("House with ID " + houseId + " has been successfully booked.");
                 booked = true;
+                String ownerName = housingUnit.getOwnerName();
+                String ownerNumber = housingUnit.getOwnerNumber();
+                String userName = User1.getuser();
+                
+                String bookedHouseInfoO = "House ID: " + houseId + ", Owner Name: " + ownerName + ", Owner Number: " + ownerNumber + ", User Name: " + userName;
+                bookedHouseInfo.add(bookedHouseInfoO);
+                
             } else if (availability.equalsIgnoreCase("no")) {
                 System.out.println("House with ID " + houseId + " is not available for booking.");
                 booked = false;
@@ -115,7 +143,10 @@ public class HousingDataProvider {
             System.out.println(booking);
         }
     }
-
+    public static void addBookedHouseInfo(String userName, String houseId, String ownerName, String ownerNumber) {
+        String info = "Username: " + userName + ", House ID: " + houseId + ", Owner Name: " + ownerName + ", Owner Number: " + ownerNumber;
+        bookedHouseInfo.add(info);
+    }
     // Methods for navigating back to tenant page
     public static boolean isBackRequested(String input) {
         return input.equalsIgnoreCase("T");
@@ -147,6 +178,12 @@ public class HousingDataProvider {
             availableHousingUnits.add(Arrays.asList(
                     houseId, location, price, services, pictures, available, numberOfRooms, ownerName, ownerNumber
             ));
+        }
+    }
+    public static void displayBookedHousesInfo() {
+        System.out.println("Booked Houses Information:");
+        for (String bookedHouseInfo : bookedHouseInfo) {
+            System.out.println(bookedHouseInfo);
         }
     }
     public static boolean book(){

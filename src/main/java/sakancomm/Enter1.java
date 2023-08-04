@@ -15,6 +15,7 @@ static boolean B=false;
     public static void main(String[] args) {
         HousingDataProvider housingDataProvider = new HousingDataProvider();
         SignUpSer signUpSer = new SignUpSer();
+     //   HousingDataProvider dataProvider = new HousingDataProvider();
 
         String sentence = "WELCOME TO Sakan Application";
         System.out.println(sentence);
@@ -116,22 +117,62 @@ return V;
                 Scanner s1 = new Scanner(System.in);
                 String s11 = s1.nextLine();
                 switch(s11) {
-                
                 case "T":
-                	
-                	
-                	
-                	
-                	
-                	
+                	Enter1.tenant();                	
                 case "Y":
-                
+                    System.out.println("Which house u want to see its details?");
+                    System.out.print("Enter the House ID :");
+                    Scanner scannn = new Scanner(System.in);
+                    String s211 = scannn.nextLine();
+                    HousingDataProvider.displayHouseDetails(s211);
+                    System.out.println("Press T if u want to go back.");
+                    Scanner scann = new Scanner(System.in);
+                    String s111 = scann.nextLine();
+                    if(s111.equals("T")) {
+                    HousingDataProvider.backing("0");
+                    }
                 }
                 V=true;
-            case "2":
-            	B=true;
-              //  HousingDataProvider.printd();
                 break;
+            case "2":       
+            	HousingDataProvider dataProvider = new HousingDataProvider();
+                System.out.println("Here are the houses with it's details");
+
+            	HousingDataProvider.displayAvailableHousingUnits();
+               Scanner scanner = new Scanner(System.in);
+                 System.out.print("Enter the House ID u want to book: ");
+                 String houseId = scanner.nextLine();
+                 Housing housingUnit = HousingDataProvider.getHousingUnitById(houseId);
+                 if (housingUnit != null) {
+                     String availability = housingUnit.getAvailable();
+                     // Book the house based on its availability
+                     HousingDataProvider.bookHouse(houseId, availability);
+                     if (HousingDataProvider.book() == true) {
+                         HousingDataProvider.displayBookedHousesInfo();
+                         // Save the booked house information
+                         HousingDataProvider. addBookedHouseInfo(
+                             User1.getuser(),
+                             houseId,
+                             housingUnit.getOwnerName(),
+                             housingUnit.getOwnerNumber()
+                         );
+                     }
+                  
+              
+                     }
+                 else{       {
+                     System.out.println("House with ID " + houseId + " does not exist.");
+                 }
+                 System.out.println("Press T if u want to go back.");
+                 Scanner scann = new Scanner(System.in);
+                 String t111 = scann.nextLine();
+                 if(t111.equals("T")) {
+                     HousingDataProvider.backing("0");
+                 }
+            	 
+                 } 
+                 break;
+
             case "3":
                 // Your furniture advertisement functionality here
                 break;
@@ -139,7 +180,6 @@ return V;
                 System.out.println("Invalid choice");
         }
     }
-
     public static void owner() {
     }
 }

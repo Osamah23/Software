@@ -8,12 +8,14 @@ import java.util.ArrayList;
         public static boolean t = false;
         public static boolean o = false;
         public static boolean d = false;
-        private String userName;
+        private static String userName;
         private String password;
         private String userType;
+		private String user;
 
         public User1(String userName, String password, String userType) {
             this.userName = userName;
+            this.user=userName;
             this.password = password;
             this.userType = userType;
         }
@@ -21,7 +23,13 @@ import java.util.ArrayList;
         public  String getUserName() {
             return userName;
         }
+        public void setuser(String userName) {
+            this.userName = userName;
+        }
 
+        public static String getuser() {
+            return userName;
+        }
         public void setUserName(String userName) {
             this.userName = userName;
         }
@@ -56,7 +64,7 @@ import java.util.ArrayList;
                 System.out.println("User Type: " + user.getUserType());
                 System.out.println("--------------------------");
 */
-                if (name.equals(user.getUserName()) && pass.equals(user.getPassword())) {
+                if (name.equals(user.getuser()) && pass.equals(user.getPassword())) {
                     if (user.getUserType().equals("1")) {
                         t = true;
                         return true;

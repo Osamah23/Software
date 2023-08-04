@@ -25,12 +25,10 @@ boolean ch1=false;
     @When("the user enter HouseID {string}")
     public void the_user_enter_house_id(String string) {
         housingDataProvider = new HousingDataProvider();
-     // HousingDataProvider.housedetails(string);
         ch=HousingDataProvider.displayHouseDetails(string);
     }
     @When("the user enter {string}")
     public void the_user_enter(String input) {
-      //  HousingDataProvider.backing(input);
       ch1=  HousingDataProvider.backing(input);
     }
 
