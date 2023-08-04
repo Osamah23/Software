@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 		features = "use_cases", 
          glue = {"tenantpackage"})
 
-public class Test_Class {
+public class TestING{
 
 }
  
