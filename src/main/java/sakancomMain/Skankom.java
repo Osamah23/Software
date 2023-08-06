@@ -50,18 +50,25 @@ public class Skankom implements Serializable {
 		ObjectOutputStream out = null;
 		try {
 			fileOut= new FileOutputStream("instance.ser");
+			try {
             out = new ObjectOutputStream(fileOut);
             out.writeObject(getInstance());
             out.close();
             fileOut.close();
-        } catch (Exception e) {
+        } 
+			finally {
+				if(out!=null)
+				out.close();
+			}
+		}
+	
+		catch (Exception e) {
             e.printStackTrace();
         }
 		finally {
 			if(fileOut!=null) 
 			fileOut.close();
-			if(out!=null)
-			out.close();
+			
 			// Multiple streams were opened. Only the last is closed.
 		  }
 	}
@@ -73,11 +80,18 @@ public class Skankom implements Serializable {
 
 		try {
 			 fileIn = new FileInputStream("instance.ser");
+			 try {
 			 in = new ObjectInputStream(fileIn);
 			deserializedInstance = (Skankom) in.readObject();
 			in.close();
 			fileIn.close();
-		} catch (Exception e) {
+		}
+			 finally {
+					if(in!=null)
+					in.close();
+					}	 
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		finally {
