@@ -58,8 +58,11 @@ public class Skankom implements Serializable {
             e.printStackTrace();
         }
 		finally {
+			if(fileOut!=null) 
 			fileOut.close();
-			out.close();// Multiple streams were opened. Only the last is closed.
+			if(out!=null)
+			out.close();
+			// Multiple streams were opened. Only the last is closed.
 		  }
 	}
 	
@@ -78,7 +81,9 @@ public class Skankom implements Serializable {
 			e.printStackTrace();
 		}
 		finally {
+			if(fileIn!=null) 
 			fileIn.close();
+			if(in!=null)
 			in.close();// Multiple streams were opened. Only the last is closed.
 		  }
 		
