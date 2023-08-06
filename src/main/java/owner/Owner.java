@@ -21,7 +21,7 @@ public class Owner extends Person implements Serializable {
     
     public void addHousing(Housing housing) {
         ownedHousing.add(housing.getId());
-        save();
+        save1();
     }
     
     public ArrayList<String> getOwnedHosuings() {
@@ -30,7 +30,7 @@ public class Owner extends Person implements Serializable {
     
     public void removeHousing(Housing housing) {
     	ownedHousing.remove(housing);
-    	save();
+    	save1();
     }
 
     public void viewOwnedHousing() {
@@ -50,7 +50,7 @@ public class Owner extends Person implements Serializable {
         return "Owner Name: " + super.getName() + ", " + super.toString();
     }
     
-    private void save() {
+    private void save1() {
 		Skankom.getInstance().writeToFile();
 	}
 }
