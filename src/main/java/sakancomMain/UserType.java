@@ -1,6 +1,6 @@
 package sakancomMain;
 
-	public enum UserType {
-        TENANT, ADMIN, OWNER
-    }
+public enum UserType {
+	TENANT, ADMIN, OWNER
+}
 
