@@ -40,12 +40,12 @@ public class Tenant extends Person implements Serializable {
 
 	public void setTimeToPay(String timeToPay) throws IOException {
 		this.timeToPay = timeToPay;
-		save();
+		save1();
 	}
 	
 	public void setUniversityMajor(String universityMajor) throws IOException {
 		this.universityMajor = universityMajor;
-		save();
+		save1();
 	}
 
 	public int getAge() {
@@ -54,22 +54,22 @@ public class Tenant extends Person implements Serializable {
 
 	public void setAge(Integer age) throws IOException {
 		this.age = age;
-		save();
+		save1();
 	}
 
 	public void bookHousing(Housing housing) throws IOException {
 		if (housing == null) { return; }
 		bookedHousing = housing.getId();
-		save();
+		save1();
 	}
 
 	public void addFurnitureForSale(Furniture furniture) throws IOException {
 		listedFurniture.add(furniture.getId());
-		save();
+		save1();
 	}
 	public void removebBookedHousing() throws IOException {
 		bookedHousing = null;
-		save();
+		save1();
 	}
 	
 	public ArrayList<String> getListedFurniture() {
@@ -78,17 +78,17 @@ public class Tenant extends Person implements Serializable {
 
 	public void removeListedFurniture(Furniture furniture) throws IOException {
 		listedFurniture.remove(furniture.getId());
-		save();
+		save1();
 	}
 
 	public void addReservedHousing(Housing housing) throws IOException {
 		reservedHousingIds.add(housing.getId());
-		save();
+		save1();
 	}
 
 	public void removeReservedHousing(String housingId) throws IOException {
 		reservedHousingIds.remove(housingId);
-		save();
+		save1();
 	}
 
 	public String getBookedHousing() {
@@ -134,7 +134,7 @@ public class Tenant extends Person implements Serializable {
 		return "Tenant Name: " + super.getName() + ", " + getTenantInfo() + ", " + super.toString();
 	}
 	
-	private void save() throws IOException {
+	private void save1() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }
