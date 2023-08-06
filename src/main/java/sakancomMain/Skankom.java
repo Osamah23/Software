@@ -50,7 +50,10 @@ public class Skankom implements Serializable {
 		ObjectOutputStream out = null;
 		try {
 			fileOut= new FileOutputStream("instance.ser");
+			try {
             out = new ObjectOutputStream(fileOut);
+            }
+			catch(IOException e) {}
             out.writeObject(getInstance());
             out.close();
             fileOut.close();
@@ -73,7 +76,11 @@ public class Skankom implements Serializable {
 
 		try {
 			 fileIn = new FileInputStream("instance.ser");
+			 try {
 			 in = new ObjectInputStream(fileIn);
+			 }
+			 catch(IOException e) {}
+			 
 			deserializedInstance = (Skankom) in.readObject();
 			in.close();
 			fileIn.close();
