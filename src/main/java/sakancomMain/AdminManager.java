@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import owner.*;
 
-public class AdminManager {
+public class AdminManager{
 	private static Skankom skankom = Skankom.getInstance();
 
 	public static void createAdmin(User user) throws IOException {
