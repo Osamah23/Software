@@ -32,7 +32,7 @@ public class Apartment implements Serializable {
 		return numberOfBathrooms;
 	}
 
-	public void setNumberOfBathrooms(int numberOfBathrooms) {
+	public void setNumberOfBathrooms(int numberOfBathrooms) throws IOException {
 		this.numberOfBathrooms = numberOfBathrooms;
 		save();
 	}
@@ -41,7 +41,7 @@ public class Apartment implements Serializable {
 		return numberOfBedrooms;
 	}
 
-	public void setNumberOfBedrooms(int numberOfBedrooms) {
+	public void setNumberOfBedrooms(int numberOfBedrooms) throws IOException {
 		this.numberOfBedrooms = numberOfBedrooms;
 		save();
 	}
@@ -50,7 +50,7 @@ public class Apartment implements Serializable {
 		return hasBalcony;
 	}
 
-	public void setHasBalcony(boolean hasBalcony) {
+	public void setHasBalcony(boolean hasBalcony) throws IOException {
 		this.hasBalcony = hasBalcony;
 		save();
 	}
@@ -59,22 +59,22 @@ public class Apartment implements Serializable {
 		return tenants;
 	}
 
-	public void addTenant(String tenant) {
+	public void addTenant(String tenant) throws IOException {
 		this.tenants.add(tenant);
 		save();
 	}
 	
-	public void setFloorId(String floorId) {
+	public void setFloorId(String floorId) throws IOException {
 		this.floorId = floorId;
 		save();
 	}
 
-	public void removeTenant(String tenant) {
+	public void removeTenant(String tenant) throws IOException {
 		this.tenants.remove(tenant);
 		save();
 	}
 
-	public void viewApartmentInfo() {
+	public void viewApartmentInfo() throws IOException {
 		System.out.println(toString());
 		if (tenants.isEmpty()) {
 			System.out.println("There is no tenants yet.");
@@ -94,7 +94,7 @@ public class Apartment implements Serializable {
         return "Number of Bathrooms: " + numberOfBathrooms + ", Number of Bedrooms: " + numberOfBedrooms + (hasBalcony ? ", with Balcony." : ", without Balcony.");
     }
 	
-	private void save() {
+	private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

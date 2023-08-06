@@ -31,12 +31,12 @@ public class Furniture implements Serializable {
     	return ownerId;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws IOException {
         this.name = name;
         save();
     }
 
-    public void setOwnerId(String ownerId) {
+    public void setOwnerId(String ownerId) throws IOException {
         this.ownerId = ownerId;
         save();
     }
@@ -45,7 +45,7 @@ public class Furniture implements Serializable {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price) throws IOException {
         this.price = price;
         save();
     }
@@ -55,7 +55,7 @@ public class Furniture implements Serializable {
         return "Furniture: " + name + ", Price: " + price;
     }
     
-    private void save() {
+    private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

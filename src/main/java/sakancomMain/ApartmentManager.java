@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class ApartmentManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static Apartment createApartment(Floor floor) {
+	public static Apartment createApartment(Floor floor) throws IOException {
 		System.out.println("Enter Number of Bedrooms:");
 		int numberOfBedrooms = SakancomApp.scanInt();
 		System.out.println("Enter Number of Bathrooms:");
@@ -23,7 +24,7 @@ public class ApartmentManager {
 		return null;
 	}
 
-	public static String deleteApartment(Floor floor) {
+	public static String deleteApartment(Floor floor) throws IOException {
 		ArrayList<Apartment> apartments = getApartments(floor);
 		if (apartments == null) { return null; }
 		return removeApartment(apartments, floor);
@@ -47,13 +48,13 @@ public class ApartmentManager {
 		return apartments;
 	}
 
-	public static void showApartments(Floor floor) {
+	public static void showApartments(Floor floor) throws IOException {
 		ArrayList<Apartment> apartments = getApartments(floor);
 		if (apartments == null) { return; }
 		showApartmentDetails(apartments);
 	}
 
-	public static void showApartmentDetails(ArrayList<Apartment> apartments) {
+	public static void showApartmentDetails(ArrayList<Apartment> apartments) throws IOException {
 		System.out.println("Choose one of the following options: \n1) Show Apartment Details \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -75,7 +76,7 @@ public class ApartmentManager {
 		}
 	}
 
-	public static String removeApartment(ArrayList<Apartment> apartments, Floor floor) {
+	public static String removeApartment(ArrayList<Apartment> apartments, Floor floor) throws IOException {
 		System.out.println("Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.size()) {

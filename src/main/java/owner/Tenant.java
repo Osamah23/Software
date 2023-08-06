@@ -13,7 +13,7 @@ public class Tenant extends Person implements Serializable {
 	private ArrayList<String> reservedHousingIds;
 	private String timeToPay;
 
-	public Tenant(String name, String email, String phoneNumber, String universityMajor, Integer age) {
+	public Tenant(String name, String email, String phoneNumber, String universityMajor, Integer age) throws IOException {
     	this.id = UUID.randomUUID().toString();
 		this.universityMajor = universityMajor;
 		this.age = age;
@@ -38,12 +38,12 @@ public class Tenant extends Person implements Serializable {
 		return timeToPay;
 	}
 
-	public void setTimeToPay(String timeToPay) {
+	public void setTimeToPay(String timeToPay) throws IOException {
 		this.timeToPay = timeToPay;
 		save();
 	}
 	
-	public void setUniversityMajor(String universityMajor) {
+	public void setUniversityMajor(String universityMajor) throws IOException {
 		this.universityMajor = universityMajor;
 		save();
 	}
@@ -52,22 +52,22 @@ public class Tenant extends Person implements Serializable {
 		return age;
 	}
 
-	public void setAge(Integer age) {
+	public void setAge(Integer age) throws IOException {
 		this.age = age;
 		save();
 	}
 
-	public void bookHousing(Housing housing) {
+	public void bookHousing(Housing housing) throws IOException {
 		if (housing == null) { return; }
 		bookedHousing = housing.getId();
 		save();
 	}
 
-	public void addFurnitureForSale(Furniture furniture) {
+	public void addFurnitureForSale(Furniture furniture) throws IOException {
 		listedFurniture.add(furniture.getId());
 		save();
 	}
-	public void removebBookedHousing() {
+	public void removebBookedHousing() throws IOException {
 		bookedHousing = null;
 		save();
 	}
@@ -76,17 +76,17 @@ public class Tenant extends Person implements Serializable {
 		return listedFurniture;
 	}
 
-	public void removeListedFurniture(Furniture furniture) {
+	public void removeListedFurniture(Furniture furniture) throws IOException {
 		listedFurniture.remove(furniture.getId());
 		save();
 	}
 
-	public void addReservedHousing(Housing housing) {
+	public void addReservedHousing(Housing housing) throws IOException {
 		reservedHousingIds.add(housing.getId());
 		save();
 	}
 
-	public void removeReservedHousing(String housingId) {
+	public void removeReservedHousing(String housingId) throws IOException {
 		reservedHousingIds.remove(housingId);
 		save();
 	}
@@ -99,7 +99,7 @@ public class Tenant extends Person implements Serializable {
 		return reservedHousingIds;
 	}
 
-	public void viewBookedHousing() {
+	public void viewBookedHousing() throws IOException {
 		if (bookedHousing == null) {
 			System.out.println("You haven't booked any housing yet.");
 		} else {
@@ -111,7 +111,7 @@ public class Tenant extends Person implements Serializable {
 		}
 	}
 
-	public void viewListedFurniture() {
+	public void viewListedFurniture() throws IOException {
 		if (listedFurniture.isEmpty()) {
 			System.out.println("You haven't listed any furniture for sale.");
 		} else {
@@ -134,7 +134,7 @@ public class Tenant extends Person implements Serializable {
 		return "Tenant Name: " + super.getName() + ", " + getTenantInfo() + ", " + super.toString();
 	}
 	
-	private void save() {
+	private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class AnnouncementManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void showAnnouncements(Admin admin) {
+	public static void showAnnouncements(Admin admin) throws IOException {
 		Collection<Announcement> collection = skankom.getAnnouncements().values();
 		Announcement[] announcements = collection.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
@@ -38,7 +39,7 @@ public class AnnouncementManager {
 		}
 	}
 
-	public static void showAnnouncements(Owner owner) {
+	public static void showAnnouncements(Owner owner) throws IOException {
 		ArrayList<Announcement> announcements = skankom.getAnnouncements(owner);
 
 		if (announcements.isEmpty()) {
@@ -70,7 +71,7 @@ public class AnnouncementManager {
 		}
 	}
 	
-	public static void showAnnouncements(Tenant tenant) {
+	public static void showAnnouncements(Tenant tenant) throws IOException {
 		ArrayList<Announcement> arrayList = skankom.getAcceptedAnnouncements();
 		Announcement[] announcements = arrayList.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
@@ -86,7 +87,7 @@ public class AnnouncementManager {
 		showAnnouncementsDetails(tenant, announcements);
 	}
 	
-	public static void showAnnouncementsDetails(Tenant tenant, Announcement[] announcements) {
+	public static void showAnnouncementsDetails(Tenant tenant, Announcement[] announcements) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Choose Announcement \n2) Return Back \n3) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -102,7 +103,7 @@ public class AnnouncementManager {
 		}
 	}
 	
-	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) {
+	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) throws IOException {
 		System.out.println("Enter Announcement Number:");
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
@@ -137,7 +138,7 @@ public class AnnouncementManager {
 		}
 	}
 	
-	public static void showHousingApartments(Tenant tenant, Announcement[] announcements, Housing housing) {
+	public static void showHousingApartments(Tenant tenant, Announcement[] announcements, Housing housing) throws IOException {
 		Apartment[] apartments = housing.getApartments().toArray(new Apartment[0]);
 		if (apartments.length == 0) {
 			System.out.println("No apartments to show");
@@ -152,7 +153,7 @@ public class AnnouncementManager {
 		showHousingApartmentsDetails(tenant, announcements, housing, apartments);
 	}
 	
-	public static void showHousingApartmentsDetails(Tenant tenant, Announcement[] announcements, Housing housing, Apartment[] apartments) {
+	public static void showHousingApartmentsDetails(Tenant tenant, Announcement[] announcements, Housing housing, Apartment[] apartments) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Choose Apartment \n2) Return Back \n3) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -168,7 +169,7 @@ public class AnnouncementManager {
 		}
 	}
 	
-	public static void chooseApartment(Tenant tenant, Housing housing, Apartment[] apartments) {
+	public static void chooseApartment(Tenant tenant, Housing housing, Apartment[] apartments) throws IOException {
 		System.out.println("Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.length) {
@@ -204,7 +205,7 @@ public class AnnouncementManager {
 		}
 	}
 
-	public static void acceptRejectAnnouncement(Announcement[] announcements) {
+	public static void acceptRejectAnnouncement(Announcement[] announcements) throws IOException {
 		System.out.println("Enter Announcement Number:");
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
@@ -221,7 +222,7 @@ public class AnnouncementManager {
 		System.out.println("Announcement with Title: " + announcement.getTitle() + " is " + (accept ? "accepted" : "rejected"));
 	}
 
-	public static void removeAnnouncement(Announcement[] announcements) {
+	public static void removeAnnouncement(Announcement[] announcements) throws IOException {
 		System.out.println("Enter Announcement Number:");
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
@@ -239,7 +240,7 @@ public class AnnouncementManager {
 		System.out.println("Announcement with Title: " + announcement.getTitle() + " is deleted");
 	}
 
-	public static void addAnnouncement(Owner owner) {
+	public static void addAnnouncement(Owner owner) throws IOException {
 		ArrayList<String> housingIds = owner.getOwnedHosuings();
 		if (housingIds.isEmpty()) {
 			System.out.println("No housings yet to advertise them.");
@@ -281,7 +282,7 @@ public class AnnouncementManager {
 		}
 	}
 
-	public static void createAnnouncementDetails(Announcement announcement) {
+	public static void createAnnouncementDetails(Announcement announcement) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Manage Services \n2) Manage Photos \n3) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {

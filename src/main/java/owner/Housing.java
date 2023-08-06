@@ -38,12 +38,12 @@ public class Housing implements Serializable {
 		return reservations;
 	}
 
-	public void addReservation(String tenantId, String apartmentId) {
+	public void addReservation(String tenantId, String apartmentId) throws IOException {
 		reservations.put(tenantId, apartmentId);
 		save();
 	}
 
-	public void removeReservation(String tenantId) {
+	public void removeReservation(String tenantId) throws IOException {
 		reservations.remove(tenantId);
 		Tenant tenant = Skankom.getInstance().getTenant(tenantId);
 		if (tenant != null) {
@@ -52,7 +52,7 @@ public class Housing implements Serializable {
 		save();
 	}
 
-	public void addTenant(String tenantId, String apartmentId) {
+	public void addTenant(String tenantId, String apartmentId) throws IOException {
 		removeReservation(tenantId);
 		if (tenantId == null) {
 			System.out.println("Tenant id is null");
@@ -76,12 +76,12 @@ public class Housing implements Serializable {
 		save();
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(String location) throws IOException {
 		this.location = location;
 		save();
 	}
 
-	public void setOwnerId(String ownerId) {
+	public void setOwnerId(String ownerId) throws IOException {
 		this.ownerId = ownerId;
 		save();
 	}
@@ -90,7 +90,7 @@ public class Housing implements Serializable {
 		return isStudentHousing;
 	}
 
-	public void setStudentHousing(boolean studentHousing) {
+	public void setStudentHousing(boolean studentHousing) throws IOException {
 		isStudentHousing = studentHousing;
 		save();
 	}
@@ -99,18 +99,18 @@ public class Housing implements Serializable {
 		return floors;
 	}
 
-	public void addFloor(Floor floor) {
+	public void addFloor(Floor floor) throws IOException {
 		floors.add(floor.getId());
 		save();
 	}
 
-	public void removeFloor(Floor floor) {
+	public void removeFloor(Floor floor) throws IOException {
 		floors.remove(floor.getId());
 		updateFloorNumbers();
 		save();
 	}
 	
-	public void removeTenant(Tenant tenant) {
+	public void removeTenant(Tenant tenant) throws IOException {
 		ArrayList<Apartment> apartments = getApartments();
 		for (Apartment apartment: apartments) {
 			apartment.removeTenant(tenant.getId());
@@ -118,7 +118,7 @@ public class Housing implements Serializable {
 		save();
 	}
 
-	public void updateFloorNumbers() {
+	public void updateFloorNumbers() throws IOException {
 		int floorNumber = 1;
 		for (String floorId: floors) {
 			Floor floor = Skankom.getInstance().getFloor(floorId);
@@ -129,7 +129,7 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public ArrayList<String> getTenants() {
+	public ArrayList<String> getTenants() throws IOException {
 		ArrayList<String> tenantsIds = new ArrayList<>();
 		for (String floorId: floors) {
 			Floor floor = Skankom.getInstance().getFloor(floorId);
@@ -145,7 +145,7 @@ public class Housing implements Serializable {
 		return tenantsIds;
 	}
 
-	public ArrayList<Apartment> getApartments() {
+	public ArrayList<Apartment> getApartments() throws IOException {
 		ArrayList<Apartment> apartments = new ArrayList<>();
 		for (String floorId: floors) {
 			Floor floor = Skankom.getInstance().getFloor(floorId);
@@ -161,7 +161,7 @@ public class Housing implements Serializable {
 		return apartments;
 	}
 
-	public void viewHousingStatistics() {
+	public void viewHousingStatistics() throws IOException {
 		if (floors.isEmpty()) {
 			System.out.println("* No floors in this housing yet.");
 		} else {
@@ -175,7 +175,7 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public void viewFloors() {
+	public void viewFloors() throws IOException {
 		System.out.println(toString());
 		if (floors.isEmpty()) {
 			System.out.println("No floors in this housing yet.");
@@ -188,7 +188,7 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public void viewTenants() {
+	public void viewTenants() throws IOException {
 		if (!isStudentHousing) {
 			System.out.println("Sorry, we cannot show tenants for non student housing.");
 			return;
@@ -211,7 +211,7 @@ public class Housing implements Serializable {
 		return "Location: " + location;
 	}
 	
-	private void save() {
+	private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

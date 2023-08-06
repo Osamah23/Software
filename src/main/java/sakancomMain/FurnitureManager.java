@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class FurnitureManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void manageFurniture(Tenant tenant) {
+	public static void manageFurniture(Tenant tenant) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Add Furniture \n2) Remove Furniture \n3) Show Furniture \n4) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -35,7 +36,7 @@ public class FurnitureManager {
 		}
 	}
 
-	public static void addFurniture(Tenant tenant) {
+	public static void addFurniture(Tenant tenant) throws IOException {
 		System.out.println("Enter name:");
 		String name = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter price:");
@@ -68,13 +69,13 @@ public class FurnitureManager {
 		return furnitures;
 	}
 
-	public static String deleteFurniture(Tenant tenant) {
+	public static String deleteFurniture(Tenant tenant) throws IOException {
 		ArrayList<Furniture> tenants = showFurniture(tenant);
 		if (tenants == null) { return null; }
 		return removeFurniture(tenants, tenant);
 	}
 
-	public static String removeFurniture(ArrayList<Furniture> furnitures, Tenant tenant) {
+	public static String removeFurniture(ArrayList<Furniture> furnitures, Tenant tenant) throws IOException {
 		System.out.println("Enter Furniture Number:");
 		int furnitureNumber = SakancomApp.scanInt();
 		if (furnitureNumber > furnitures.size()) {

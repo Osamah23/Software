@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class FloorManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void manageFloors(Housing housing) {
+	public static void manageFloors(Housing housing) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Add Floor \n2) Remove Floor \n3) Show Floors \n4) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -54,7 +55,7 @@ public class FloorManager {
 		System.out.println("]");
 	}
 
-	public static String deleteFloor(Housing housing) {
+	public static String deleteFloor(Housing housing) throws IOException {
 		if (housing.getFloors().isEmpty()) {
 			System.out.println("No floors added yet to " + housing.toString());
 			return null;
@@ -62,7 +63,7 @@ public class FloorManager {
 		return removeFloor(housing);
 	}
 
-	public static String removeFloor(Housing housing) {
+	public static String removeFloor(Housing housing) throws IOException {
 		System.out.println("Enter Floor Number:");
 		int floorNumber = SakancomApp.scanInt();
 		if (floorNumber > housing.getFloors().size()) {
@@ -83,7 +84,7 @@ public class FloorManager {
 		return floorInfo;
 	}
 
-	public static Floor createFloor(Housing housing, Floor floor) {
+	public static Floor createFloor(Housing housing, Floor floor) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Add Apartment \n2) Remove Apartment \n3) Show Apartments \n4) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {

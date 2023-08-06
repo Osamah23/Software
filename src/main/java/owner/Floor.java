@@ -29,12 +29,12 @@ public class Floor implements Serializable {
 		return floorNumber;
 	}
 
-	public void setFloorNumber(int floorNumber) {
+	public void setFloorNumber(int floorNumber) throws IOException {
 		this.floorNumber = floorNumber;
 		save();
 	}
 	
-	public void setHousingId(String housingId) {
+	public void setHousingId(String housingId) throws IOException {
 		this.housingId = housingId;
 		save();
 	}
@@ -43,17 +43,17 @@ public class Floor implements Serializable {
 		return apartments;
 	}
 
-	public void addApartment(Apartment apartment) {
+	public void addApartment(Apartment apartment) throws IOException {
 		apartments.add(apartment.getId());
 		save();
 	}
 	
-	public void removeApartment(Apartment apartment) {
+	public void removeApartment(Apartment apartment) throws IOException {
 		apartments.remove(apartment.getId());
 		save();
 	}
 
-	public void viewApartments() {
+	public void viewApartments() throws IOException {
 		System.out.println(toString());
 		if (apartments.isEmpty()) {
 			System.out.println("You haven't listed any apartments yet.");
@@ -73,7 +73,7 @@ public class Floor implements Serializable {
         return "Floor Number: " + floorNumber;
     }
 	
-	private void save() {
+	private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

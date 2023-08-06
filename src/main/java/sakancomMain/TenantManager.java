@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class TenantManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void createTenant(User user) {
+	public static void createTenant(User user) throws IOException {
 		System.out.println("Enter Tenant Name:");
 		String tenantName = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter University Major:");
@@ -25,7 +26,7 @@ public class TenantManager {
 		enterAsTenant(tenant);
 	}
 
-	public static void enterAsTenant(Tenant tenant) {
+	public static void enterAsTenant(Tenant tenant) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Show Announecemnts \n2) Manage Reservations \n3) Manage Booking \n4) Manage Furniture \n5) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -50,7 +51,7 @@ public class TenantManager {
 		}
 	}
 
-	public static void manageBooking(Tenant tenant) {
+	public static void manageBooking(Tenant tenant) throws IOException {
 		if (tenant.getBookedHousing() == null) {
 			System.out.println("You haven't booked any apartment yet.");
 			return;

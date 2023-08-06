@@ -29,12 +29,12 @@ public class Admin implements Serializable {
         return name;
     }
 
-    public void setOwnerId(String ownerId) {
+    public void setOwnerId(String ownerId) throws IOException {
     	this.ownerId = ownerId;
     	save();
     }
     
-    public void setName(String name) {
+    public void setName(String name) throws IOException {
         this.name = name;
         save();
     }
@@ -44,7 +44,7 @@ public class Admin implements Serializable {
         return "Admin Name: " + name;
     }
     
-    private void save() {
+    private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

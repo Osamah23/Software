@@ -1,5 +1,6 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 import java.util.stream.*;
@@ -8,7 +9,7 @@ import java.util.stream.*;
 public class OwnerManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void createOwner(User user) {
+	public static void createOwner(User user) throws IOException {
 		System.out.println("Enter Owner Name:");
 		String name = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter Email:");
@@ -23,7 +24,7 @@ public class OwnerManager {
 		enterAsOwner(owner);
 	}
 	
-	public static void enterAsOwner(Owner owner) {
+	public static void enterAsOwner(Owner owner) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Show Announecemnts \n2) Show Reservations \n3) Add Announcement \n4) Show Housings \n5) Add Housing \n6) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {

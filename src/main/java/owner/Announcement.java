@@ -41,7 +41,7 @@ public class Announcement implements Serializable {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(double price) throws IOException {
 		this.price = price;
 		save();
 	}
@@ -50,7 +50,7 @@ public class Announcement implements Serializable {
 		return photos;
 	}
 
-	public void addPhotos(Image photo) {
+	public void addPhotos(Image photo) throws IOException {
 		this.photos.add(photo);
 		save();
 	}
@@ -59,12 +59,12 @@ public class Announcement implements Serializable {
 		return services;
 	}
 
-	public void addService(String service) {
+	public void addService(String service) throws IOException {
 		this.services.add(service);
 		save();
 	}
 
-	public void removeService(String service) {
+	public void removeService(String service) throws IOException {
 		this.services.remove(service);
 		save();
 	}
@@ -73,7 +73,7 @@ public class Announcement implements Serializable {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(String title) throws IOException {
 		this.title = title;
 		save();
 	}
@@ -82,7 +82,7 @@ public class Announcement implements Serializable {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(String description) throws IOException {
 		this.description = description;
 		save();
 	}
@@ -91,7 +91,7 @@ public class Announcement implements Serializable {
 		return ownerId;
 	}
 
-	public void setOwner(Owner owner) {
+	public void setOwner(Owner owner) throws IOException {
 		this.ownerId = owner.getId();
 		save();
 	}
@@ -100,7 +100,7 @@ public class Announcement implements Serializable {
 		return housingId;
 	}
 
-	public void setHousing(Housing housing) {
+	public void setHousing(Housing housing) throws IOException {
 		this.housingId = housing.getId();
 		save();
 	}
@@ -122,8 +122,11 @@ public class Announcement implements Serializable {
 
 	@Override
 	public String toString() {
-		Owner owner = Skankom.getInstance().getOwner(ownerId);
-		Housing housing = Skankom.getInstance().getHousing(housingId);
+		Owner owner = null;
+		owner = Skankom.getInstance().getOwner(ownerId);
+		Housing housing = null;
+		
+			housing = Skankom.getInstance().getHousing(housingId);
 		if (owner != null && housing != null) {
 			return "Announcement: " + title + "\nDescription: " + description
 					+ "\nOwner: " + owner.getName() + "\nLocation: " + housing.getLocation()
@@ -133,7 +136,7 @@ public class Announcement implements Serializable {
 		return "Announcement: " + title + "\nDescription: " + description;
 	}
 	
-	private void save() {
+	private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

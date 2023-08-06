@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class AdminManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void createAdmin(User user) {
+	public static void createAdmin(User user) throws IOException {
 		System.out.println("Enter Admin Name:");
 		String adminName = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter Email:");
@@ -23,7 +24,7 @@ public class AdminManager {
 		enterAsAdmin(admin);
 	}
 
-	public static void enterAsAdmin(Admin admin) {
+	public static void enterAsAdmin(Admin admin) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Show Announecemnts \n2) Show Reservations \n3) Add Announcement \n4) Show Housings \n5) Add Housing \n6) Exit");
 		int choice = SakancomApp.scanInt();
 		Owner owner = skankom.getOwner(admin.getOwnerId());

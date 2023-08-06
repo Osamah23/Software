@@ -33,27 +33,27 @@ public class User implements Serializable {
 		return userType;
 	}
 	
-	public void setUserId(String userId) {
+	public void setUserId(String userId) throws IOException {
 		this.userId = userId;
 		save();
 	}
 	
-	public void setUserName(String userName) {
+	public void setUserName(String userName) throws IOException {
 		this.userName = userName;
 		save();
 	}
 	
-	public void setPassword(String password) {
+	public void setPassword(String password) throws IOException {
 		this.password = password;
 		save();
 	}
 	
-	public void setUserType(UserType userType) {
+	public void setUserType(UserType userType) throws IOException {
 		this.userType = userType;
 		save();
 	}
 	
-	private void save() {
+	private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

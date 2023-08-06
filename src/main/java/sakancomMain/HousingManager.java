@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class HousingManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static Housing createHousing(Owner owner) {
+	public static Housing createHousing(Owner owner) throws IOException {
 		System.out.println("Enter Location:");
 		String location = SakancomApp.getScanner().nextLine();
 		System.out.println("Does it student apartment? \n1) Yes\n2) No");
@@ -24,7 +25,7 @@ public class HousingManager {
 		return null;
 	}
 
-	public static Housing createHousingDetails(Housing housing) {
+	public static Housing createHousingDetails(Housing housing) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Manage Floors \n2) Show Housing Details \n3) Edit Location \n4) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -50,11 +51,11 @@ public class HousingManager {
 		return housing;
 	}
 
-	public static Housing editHousing(Housing housing) {
+	public static Housing editHousing(Housing housing) throws IOException {
 		return createHousingDetails(housing);
 	}
 
-	public static void showHousings(Admin admin) {
+	public static void showHousings(Admin admin) throws IOException {
 		Collection<Housing> collection = skankom.getHousings().values();
 		Housing[] housings = collection.toArray(new Housing[0]);
 		if (housings.length == 0) {
@@ -90,7 +91,7 @@ public class HousingManager {
 		}
 	}
 	
-	public static void showHousings(Owner owner) {
+	public static void showHousings(Owner owner) throws IOException {
 		ArrayList<Housing> arrayList = skankom.getHousings(owner);
 		Housing[] housings = arrayList.toArray(new Housing[0]);
 		if (housings.length == 0) {
@@ -121,7 +122,7 @@ public class HousingManager {
 		}
 	}
 
-	public static void editHousing(Housing[] housings) {
+	public static void editHousing(Housing[] housings) throws IOException {
 		System.out.println("Enter Housing Number:");
 		int housingNumber = SakancomApp.scanInt();
 		if (housingNumber <= housings.length) {
@@ -138,7 +139,7 @@ public class HousingManager {
 		}
 	}
 
-	public static void removeHousing(Housing[] housings) {
+	public static void removeHousing(Housing[] housings) throws IOException {
 		System.out.println("Enter Housing Number:");
 		int housingNumber = SakancomApp.scanInt();
 		if (housingNumber > housings.length) {

@@ -1,5 +1,6 @@
 package owner;
 
+import java.io.IOException;
 import java.util.*;
 
 import sakancomMain.Skankom;
@@ -19,7 +20,7 @@ public class Person {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws IOException {
         this.name = name;
         save();
     }
@@ -28,7 +29,7 @@ public class Person {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IOException {
         this.email = email;
         save();
     }
@@ -37,7 +38,7 @@ public class Person {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) throws IOException {
     	this.phoneNumber = phoneNumber;
     	save();
     }
@@ -47,7 +48,7 @@ public class Person {
         return "Email: " + email + ", Phone Number: " + phoneNumber;
     }
     
-    private void save() {
+    private void save() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }

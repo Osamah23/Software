@@ -29,41 +29,59 @@ public class Skankom implements Serializable {
 		floors = new HashMap<>();
 	}
 
-	public static synchronized Skankom getInstance() {
+	public static synchronized Skankom getInstance(){
 		if (instance == null) {
-			instance = Skankom.readFromFile();
+			try {
+				instance = Skankom.readFromFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}
 	
-	public void save() {
+	public void save() throws IOException {
 		writeToFile();
 	}
 	
-	public void writeToFile() {
+	public void writeToFile() throws IOException {
+		FileOutputStream fileOut = null;
+		ObjectOutputStream out = null;
 		try {
-            FileOutputStream fileOut = new FileOutputStream("instance.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			fileOut= new FileOutputStream("instance.ser");
+            out = new ObjectOutputStream(fileOut);
             out.writeObject(getInstance());
             out.close();
             fileOut.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+		finally {
+			fileOut.close();
+			out.close();// Multiple streams were opened. Only the last is closed.
+		  }
 	}
 	
-	public static synchronized Skankom readFromFile() {
+	public static synchronized Skankom readFromFile() throws IOException {
 		Skankom deserializedInstance = null;
+		FileInputStream fileIn = null;
+		ObjectInputStream in = null;
 
 		try {
-			FileInputStream fileIn = new FileInputStream("instance.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
+			 fileIn = new FileInputStream("instance.ser");
+			 in = new ObjectInputStream(fileIn);
 			deserializedInstance = (Skankom) in.readObject();
 			in.close();
 			fileIn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		finally {
+			fileIn.close();
+			in.close();// Multiple streams were opened. Only the last is closed.
+		  }
+		
 
 		if (deserializedInstance != null) {
 			return deserializedInstance;
@@ -111,13 +129,13 @@ public class Skankom implements Serializable {
 		return users;
 	}
 
-	public void addHousing(Housing housing) {
+	public void addHousing(Housing housing) throws IOException {
 		if (housing == null) { return; }
 		housings.put(housing.getId(), housing);
 		save();
 	}
 
-	public void removeHousing(Housing housing) {
+	public void removeHousing(Housing housing) throws IOException {
 		if (housing == null) { return; }
 		for (String floorId: housing.getFloors()) {
 			Floor floor = getFloor(floorId);
@@ -127,13 +145,13 @@ public class Skankom implements Serializable {
 		save();
 	}
 
-	public void removeApartment(Apartment apartment) {
+	public void removeApartment(Apartment apartment) throws IOException {
 		if (apartment == null) { return; }
 		apartments.remove(apartment.getId());
 		save();
 	}
 
-	public void removeFloor(Floor floor) {
+	public void removeFloor(Floor floor) throws IOException {
 		if (floor == null) { return; }
 		for (String apartmentId: floor.getApartments()) {
 			Apartment apartment = getApartment(apartmentId);
@@ -143,57 +161,57 @@ public class Skankom implements Serializable {
 		save();
 	}
 
-	public void addFurniture(Furniture furniture) {
+	public void addFurniture(Furniture furniture) throws IOException {
 		if (furniture == null) { return; }
 		furnitures.put(furniture.getId(), furniture);
 		save();
 	}
 	
-	public void removeFurniture(Furniture furniture) {
+	public void removeFurniture(Furniture furniture) throws IOException {
 		if (furniture == null) { return; }
 		furnitures.remove(furniture.getId());
 		save();
 	}
 
-	public void addApartment(Apartment apartment) {
+	public void addApartment(Apartment apartment) throws IOException {
 		if (apartment == null) { return; }
 		apartments.put(apartment.getId(), apartment);
 		save();
 	}
 
-	public void addOwner(Owner owner) {
+	public void addOwner(Owner owner) throws IOException {
 		if (owner == null) { return; }
 		owners.put(owner.getId(), owner);
 		save();
 	}
 
-	public void addTenant(Tenant tenant) {
+	public void addTenant(Tenant tenant) throws IOException {
 		if (tenant == null) { return; }
 		tenants.put(tenant.getId(), tenant);
 		save();
 	}
 
-	public void addUser(User user) {
+	public void addUser(User user) throws IOException {
 		if (user == null) { return; }
 		users.put(user.getUserName(), user);
 		save();
 	}
 
-	public void addAnnouncement(Announcement announcement) {
+	public void addAnnouncement(Announcement announcement) throws IOException {
 		if (announcement == null) { return; }
 		announcements.put(announcement.getId(), announcement);
 		addAnnouncementStatus(announcement , AnnouncementStatus.PENDING);
 		save();
 	}
 
-	public void removeAnnouncement(Announcement announcement) {
+	public void removeAnnouncement(Announcement announcement) throws IOException {
 		if (announcement == null) { return; }
 		announcements.remove(announcement.getId());
 		removeAnnouncementStatus(announcement);
 		save();
 	}
 
-	public void removeAnnouncementStatus(Announcement announcement) {
+	public void removeAnnouncementStatus(Announcement announcement) throws IOException {
 		if (announcement == null) { return; }
 		announcementsStatus.remove(announcement.getId());
 		save();
@@ -237,19 +255,19 @@ public class Skankom implements Serializable {
 		return announcements;
 	}
 
-	public void addAnnouncementStatus(Announcement announcement, AnnouncementStatus status) {
+	public void addAnnouncementStatus(Announcement announcement, AnnouncementStatus status) throws IOException {
 		if (announcement == null) { return; }
 		announcementsStatus.put(announcement.getId(), status);
 		save();
 	}
 
-	public void addAdmin(Admin admin) {
+	public void addAdmin(Admin admin) throws IOException {
 		if (admin == null) { return; }
 		admins.put(admin.getId(), admin);
 		save();
 	}
 
-	public void addFloor(Floor floor) {
+	public void addFloor(Floor floor) throws IOException {
 		if (floor == null) { return; }
 		floors.put(floor.getId(), floor);
 		save();

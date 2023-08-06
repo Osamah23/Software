@@ -7,7 +7,7 @@ import owner.*;
 public class SakancomApp {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		String sentence = "WELCOME TO Sakan Application";
 		System.out.println(sentence);
 		entrance();
@@ -38,7 +38,7 @@ public class SakancomApp {
 		return number;
 	}
 
-	public static void entrance() {
+	public static void entrance() throws IOException {
 		System.out.println("1) Sign In\n2) Sign Up\n3) Quit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -55,7 +55,7 @@ public class SakancomApp {
 		}
 	}
 
-	public static void signIn() {
+	public static void signIn() throws IOException {
 		System.out.println("Enter userName:");
 		String userName = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter password:");
@@ -72,7 +72,7 @@ public class SakancomApp {
 		}
 	}
 
-	public static void signUp() {
+	public static void signUp() throws IOException {
 		System.out.println("Enter userName:");
 		String userName = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter password:");
@@ -100,7 +100,7 @@ public class SakancomApp {
 		}
 	}
 
-	public static void createSuitableUser(User user) {
+	public static void createSuitableUser(User user) throws IOException {
 		switch (user.getUserType()) {
 		case ADMIN:
 			AdminManager.createAdmin(user);
@@ -117,7 +117,7 @@ public class SakancomApp {
 		}
 	}
 
-	public static void classifyUser(User user) {
+	public static void classifyUser(User user) throws IOException {
 		switch (user.getUserType()) {
 		case ADMIN:
 			Admin admin = skankom.getAdmin(user.getUserId());

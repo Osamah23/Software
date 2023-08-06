@@ -1,12 +1,13 @@
 package sakancomMain;
 
+import java.io.IOException;
 import java.util.*;
 import owner.*;
 
 public class ReservationManager {
 	private static Skankom skankom = Skankom.getInstance();
 
-	public static void showReservations() {
+	public static void showReservations() throws IOException {
 		Collection<Housing> collection = skankom.getHousings().values();
 		Housing[] housings = collection.toArray(new Housing[0]);
 		if (housings.length == 0) {
@@ -15,7 +16,13 @@ public class ReservationManager {
 		}
 		for (Housing housing: housings) {
 			System.out.println(housing.toString() + "\nReservations:\n[");
-			ArrayList<String> tenants = housing.getTenants();
+			ArrayList<String> tenants = null;
+			try {
+				tenants = housing.getTenants();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			for (String tenantId: tenants) {
 				Tenant tenant = skankom.getTenant(tenantId);
 				if (tenant != null) {
@@ -27,7 +34,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void showReservations(Owner owner) {
+	public static void showReservations(Owner owner) throws IOException {
 		ArrayList<Housing> housings = skankom.getHousings(owner);
 		if (housings.isEmpty()) {
 			System.out.println("No housings added to show.");
@@ -50,7 +57,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void showAnnoucements(Owner owner, ArrayList<Housing> housings) {
+	public static void showAnnoucements(Owner owner, ArrayList<Housing> housings) throws IOException {
 		System.out.println("Enter Housing Number:");
 		int housingNumber = SakancomApp.scanInt();
 		if (housingNumber > housings.size()) {
@@ -79,7 +86,7 @@ public class ReservationManager {
 		showReservationDetails(owner, housings, housing, reservations);
 	}
 
-	public static void showReservationDetails(Owner owner, ArrayList<Housing> housings, Housing housing, Map<String, String> reservations) {
+	public static void showReservationDetails(Owner owner, ArrayList<Housing> housings, Housing housing, Map<String, String> reservations) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Accept/Reject Reservation \n2) Return Back \n3) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -93,7 +100,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void acceptRejectReservation(Housing housing, Map<String, String> reservations) {
+	public static void acceptRejectReservation(Housing housing, Map<String, String> reservations) throws IOException {
 		System.out.println("Enter Reservation Number:");
 		int reservationNumber = SakancomApp.scanInt();
 		if (reservationNumber > reservations.size()) {
@@ -115,7 +122,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void showReservations(Tenant tenant) {
+	public static void showReservations(Tenant tenant) throws IOException {
 		ArrayList<String> reservations = tenant.getReservedHousing();
 		if (reservations.isEmpty()) {
 			System.out.println("No reservations added to show.");
@@ -146,7 +153,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void removeReservation(Tenant tenant, ArrayList<String> reservations) {
+	public static void removeReservation(Tenant tenant, ArrayList<String> reservations) throws IOException {
 		System.out.println("Enter Reservation Number:");
 		int reservationNumber = SakancomApp.scanInt();
 		if (reservationNumber > reservations.size()) {

@@ -8,7 +8,7 @@ public class Owner extends Person implements Serializable {
 	private String id;
     private ArrayList<String> ownedHousing;
 
-    public Owner(String name, String email, String phoneNumber) {
+    public Owner(String name, String email, String phoneNumber) throws IOException {
     	this.id = UUID.randomUUID().toString();
         this.ownedHousing = new ArrayList<>();
         super.setEmail(email);
@@ -19,7 +19,7 @@ public class Owner extends Person implements Serializable {
     	return id;
     }
     
-    public void addHousing(Housing housing) {
+    public void addHousing(Housing housing) throws IOException {
         ownedHousing.add(housing.getId());
         save1();
     }
@@ -28,12 +28,12 @@ public class Owner extends Person implements Serializable {
     	return ownedHousing;
     }
     
-    public void removeHousing(Housing housing) {
+    public void removeHousing(Housing housing) throws IOException {
     	ownedHousing.remove(housing);
     	save1();
     }
 
-    public void viewOwnedHousing() {
+    public void viewOwnedHousing() throws IOException {
         if (ownedHousing.isEmpty()) {
             System.out.println("You don't have any owned housing yet.");
         } else {
@@ -50,7 +50,7 @@ public class Owner extends Person implements Serializable {
         return "Owner Name: " + super.getName() + ", " + super.toString();
     }
     
-    private void save1() {
+    private void save1() throws IOException {
 		Skankom.getInstance().writeToFile();
 	}
 }
