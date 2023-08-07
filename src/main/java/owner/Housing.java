@@ -2,7 +2,6 @@ package owner;
 
 import java.util.*;
 import sakancomMain.*;
-import java.awt.*;
 import java.io.*;
 
 public class Housing implements Serializable {
