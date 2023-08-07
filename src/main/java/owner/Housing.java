@@ -164,17 +164,19 @@ public class Housing implements Serializable {
 		return apartments;
 	}
 
-	public void viewHousingStatistics() throws IOException {
+	public void viewHousingStatistics(){
 		if (floors.isEmpty()) {
-			System.out.println("* No floors in this housing yet.");
+			LOGGER.log(Level.INFO,"* No floors in this housing yet.");
 		} else {
-			System.out.println("* " + floors.size() + " floors in this housing.");
+			String b="* " + floors.size() + " floors in this housing.";
+			LOGGER.log(Level.INFO,b);
 		}
 		List<String> tenants = getTenants();
 		if (tenants.isEmpty()) {
-			System.out.println("* No tenants in this housing yet.");
+			LOGGER.log(Level.INFO,"* No tenants in this housing yet.");
 		} else {
-			System.out.println("* " + tenants.size() + " tenants in this housing:");
+			String v="* " + tenants.size() + " tenants in this housing:";
+			LOGGER.log(Level.INFO,v);
 		}
 	}
 
