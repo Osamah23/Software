@@ -98,7 +98,7 @@ public class Housing implements Serializable {
 		save();
 	}
 
-	public ArrayList<String> getFloors() {
+	public List<String> getFloors() {
 		return floors;
 	}
 

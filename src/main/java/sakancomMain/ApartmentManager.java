@@ -17,7 +17,7 @@ public class ApartmentManager {
 		System.out.println("Adding Apartment Confirmation:\n1) Confirm \n2) Cancel");
 		int choice = SakancomApp.scanInt();
 		if (choice == 1) {
-			Apartment apartment = new Apartment(floor.getId(), numberOfBathrooms, numberOfBedrooms, hasBalcony);
+			Apartment apartment = new Apartment( numberOfBathrooms, numberOfBedrooms, hasBalcony);
 			skankom.addApartment(apartment);
 			return apartment;
 		}
