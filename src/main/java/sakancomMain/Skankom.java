@@ -94,7 +94,7 @@ public class Skankom implements Serializable {
 					}	 
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.log(Level.INFO, "error in read from file function!");
 		}
 		finally {
 			if(fileIn!=null) 
