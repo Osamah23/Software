@@ -12,7 +12,7 @@ public class Apartment implements Serializable {
 	private boolean hasBalcony;
 	private List<String> tenants;
 
-	public Apartment(String floorId, int numberOfBathrooms, int numberOfBedrooms, boolean hasBalcony) {
+	public Apartment(int numberOfBathrooms, int numberOfBedrooms, boolean hasBalcony) {
 		this.id = UUID.randomUUID().toString();
 		this.numberOfBathrooms = numberOfBathrooms;
 		this.numberOfBedrooms = numberOfBedrooms;
