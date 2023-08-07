@@ -21,11 +21,8 @@ public class ReservationManager {
 		for (Housing housing: housings) {
 			System.out.println(housing.toString() + "\nReservations:\n[");
 			List<String> tenants = null;
-			try {
 				tenants = housing.getTenants();
-			} catch (IOException e) {
-				LOGGER.log(Level.INFO, "error in get tenant func");
-			}
+			
 			for (String tenantId: tenants) {
 				Tenant tenant = skankom.getTenant(tenantId);
 				if (tenant != null) {

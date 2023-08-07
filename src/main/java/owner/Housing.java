@@ -114,7 +114,7 @@ public class Housing implements Serializable {
 	}
 	
 	public void removeTenant(Tenant tenant) throws IOException {
-		ArrayList<Apartment> apartments = getApartments();
+		List<Apartment> apartments = getApartments();
 		for (Apartment apartment: apartments) {
 			apartment.removeTenant(tenant.getId());
 		}
@@ -148,7 +148,7 @@ public class Housing implements Serializable {
 		return tenantsIds;
 	}
 
-	public ArrayList<Apartment> getApartments() throws IOException {
+	public List<Apartment> getApartments() {
 		ArrayList<Apartment> apartments = new ArrayList<>();
 		for (String floorId: floors) {
 			Floor floor = Skankom.getInstance().getFloor(floorId);
