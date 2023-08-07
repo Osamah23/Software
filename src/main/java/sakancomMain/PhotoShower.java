@@ -1,0 +1,32 @@
+package sakancomMain;
+
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import java.util.*;
+import javax.imageio.*;
+import javax.swing.*;
+
+public class PhotoShower extends JFrame {
+	JPanel frame=new JPanel();
+
+	public PhotoShower() {
+		super();
+		super.setSize(1200,1200);
+		super.setLayout(new FlowLayout());
+	}
+	
+	public void paintPhoto(BufferedImage a) {
+		JLabel picLabel = new JLabel(new ImageIcon(a));
+		frame.add(picLabel);
+		frame.setSize(400,400);
+		super.add(frame);
+		super.setVisible(true);
+	}
+
+	public void paintAllPhotos(ArrayList<BufferedImage> photos) {
+		for(int i=0;  i< photos.size(); i++) {
+			paintPhoto(photos.get(i));
+		}
+	}
+}

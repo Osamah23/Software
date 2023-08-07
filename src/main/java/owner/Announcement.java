@@ -1,8 +1,14 @@
 package owner;
 
 import java.util.*;
+
+import javax.imageio.ImageIO;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
+
+import sakancomMain.PhotoManager;
 import sakancomMain.Skankom;
 
 public class Announcement implements Serializable {
@@ -14,7 +20,7 @@ public class Announcement implements Serializable {
 	private double price;
 	private boolean includesElectricityAndWater;
 	private ArrayList<String> services;
-	private ArrayList<Image> photos;
+	private ArrayList<String> photos;
 
 	public Announcement(String title,
 			String description, 
@@ -46,12 +52,31 @@ public class Announcement implements Serializable {
 		save();
 	}
 
-	public ArrayList<Image> getPhotos() {
-		return photos;
+	public ArrayList<BufferedImage> getPhotos() {
+		ArrayList<BufferedImage> photosArray = new ArrayList<BufferedImage>();
+		for (String url: photos) {
+			try {
+				BufferedImage source=ImageIO.read(new FileInputStream((url)));
+				photosArray.add(source);
+			} 
+			 catch (IOException e) {
+			} 
+		}
+		return photosArray;
+	}
+	
+	public int getPhotosCount() {
+		return photos.size();
 	}
 
-	public void addPhotos(Image photo) throws IOException {
+	public void addPhoto(String photo) throws IOException {
 		this.photos.add(photo);
+		save();
+	}
+	
+	public void removePhoto(int photoIndex) throws IOException {
+		if (photoIndex >= photos.size()) { return; }
+		this.photos.remove(photoIndex);
 		save();
 	}
 
@@ -117,7 +142,7 @@ public class Announcement implements Serializable {
 	}
 
 	public void viewPhotos() {
-		// FIXME
+		PhotoManager.showPhotos(this);
 	}
 
 	@Override
