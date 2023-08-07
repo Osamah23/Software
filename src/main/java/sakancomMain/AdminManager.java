@@ -14,7 +14,7 @@ public class AdminManager{
 		String email = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter Phone Number:");
 		String phoneNumber = SakancomApp.getScanner().nextLine();
-		Owner owner = new Owner(adminName, email, phoneNumber);
+		Owner owner = new Owner( email, phoneNumber);
 		Admin admin = new Admin(owner.getId(), adminName);
 		user.setUserId(admin.getId());
 		skankom.addAdmin(admin);

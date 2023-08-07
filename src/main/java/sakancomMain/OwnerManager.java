@@ -16,7 +16,7 @@ public class OwnerManager {
 		String email = SakancomApp.getScanner().nextLine();
 		System.out.println("Enter Phone Number:");
 		String phoneNumber = SakancomApp.getScanner().nextLine();
-		Owner owner = new Owner(name, email, phoneNumber);
+		Owner owner = new Owner( email, phoneNumber);
 		user.setUserId(owner.getId());
 		skankom.addOwner(owner);
 		skankom.addUser(user);
