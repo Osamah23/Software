@@ -2,10 +2,14 @@ package sakancomMain;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import owner.*;
 
 public class ReservationManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private static final Logger LOGGER = Logger.getLogger(Announcement.class.getName());
 
 	public static void showReservations() throws IOException {
 		Collection<Housing> collection = skankom.getHousings().values();
@@ -20,8 +24,7 @@ public class ReservationManager {
 			try {
 				tenants = housing.getTenants();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOGGER.log(Level.INFO, "error in get tenant func");
 			}
 			for (String tenantId: tenants) {
 				Tenant tenant = skankom.getTenant(tenantId);
