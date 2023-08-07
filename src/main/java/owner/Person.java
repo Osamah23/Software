@@ -2,7 +2,7 @@ package owner;
 
 import java.io.IOException;
 
-import sakancomMain.Skankom;
+import sakancommain.Skankom;
 
 public class Person {
     private String name;

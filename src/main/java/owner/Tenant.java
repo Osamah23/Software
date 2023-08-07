@@ -3,8 +3,10 @@ package owner;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import sakancommain.*;
+
 import java.io.*;
-import sakancomMain.*;
 
 public class Tenant extends Person implements Serializable {
 	private String id;

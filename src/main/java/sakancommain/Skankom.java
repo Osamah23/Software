@@ -1,4 +1,4 @@
-package sakancomMain;
+package sakancommain;
 import owner.*;
 import java.io.*;
 import java.util.*;

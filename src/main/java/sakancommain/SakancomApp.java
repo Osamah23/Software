@@ -1,4 +1,4 @@
-package sakancomMain;
+package sakancommain;
 
 import java.util.Scanner;
 import java.io.*;

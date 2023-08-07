@@ -2,7 +2,7 @@ package owner;
 
 import java.util.*;
 
-import sakancomMain.Skankom;
+import sakancommain.Skankom;
 
 import java.io.*;
 

@@ -1,7 +1,8 @@
 package owner;
 
 import java.io.*;
-import sakancomMain.*;
+
+import sakancommain.*;
 
 public class User implements Serializable {
 	private String userId = null;

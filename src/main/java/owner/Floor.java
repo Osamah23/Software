@@ -3,8 +3,10 @@ package owner;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import sakancommain.Skankom;
+
 import java.io.*;
-import sakancomMain.Skankom;
 
 public class Floor implements Serializable {
 	private String id;

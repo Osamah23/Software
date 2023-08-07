@@ -6,11 +6,11 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
+import sakancommain.PhotoManager;
+import sakancommain.Skankom;
+
 import java.awt.image.BufferedImage;
 import java.io.*;
-
-import sakancomMain.PhotoManager;
-import sakancomMain.Skankom;
 
 public class Announcement implements Serializable {
 	private String id;

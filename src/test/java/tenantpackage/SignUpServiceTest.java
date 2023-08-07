@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import sakancomMain.SignUpService;
-import sakancomMain.UserType;
+import sakancommain.SignUpService;
+import sakancommain.UserType;
 
 public class SignUpServiceTest {
 	private SignUpService signUpService;

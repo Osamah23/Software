@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import sakancomMain.User;
+import sakancommain.User;
 
 public class login {
 

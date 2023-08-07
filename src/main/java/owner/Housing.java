@@ -4,7 +4,8 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import sakancomMain.*;
+import sakancommain.*;
+
 import java.io.*;
 
 public class Housing implements Serializable {

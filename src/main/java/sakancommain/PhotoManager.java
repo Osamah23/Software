@@ -1,4 +1,4 @@
-package sakancomMain;
+package sakancommain;
 
 import java.io.*;
 import java.util.List;

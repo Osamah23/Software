@@ -1,4 +1,4 @@
-package sakancomMain;
+package sakancommain;
 
 import java.io.IOException;
 import java.util.*;
