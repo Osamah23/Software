@@ -9,7 +9,7 @@ import owner.*;
 
 public class ReservationManager {
 	private static Skankom skankom = Skankom.getInstance();
-	private static final Logger LOGGER = Logger.getLogger(Announcement.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(ReservationManager.class.getName());
 
 	public static void showReservations() throws IOException {
 		Collection<Housing> collection = skankom.getHousings().values();

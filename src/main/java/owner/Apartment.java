@@ -1,6 +1,8 @@
 package owner;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.*;
 import sakancomMain.Skankom;
 
@@ -11,6 +13,7 @@ public class Apartment implements Serializable {
 	private int numberOfBedrooms;
 	private boolean hasBalcony;
 	private List<String> tenants;
+	private static final Logger LOGGER = Logger.getLogger(Apartment.class.getName());
 
 	public Apartment(int numberOfBathrooms, int numberOfBedrooms, boolean hasBalcony) {
 		this.id = UUID.randomUUID().toString();
@@ -77,13 +80,14 @@ public class Apartment implements Serializable {
 	public void viewApartmentInfo() {
 		System.out.println(toString());
 		if (tenants.isEmpty()) {
-			System.out.println("There is no tenants yet.");
+			LOGGER.log(Level.INFO,"There is no tenants yet.");
 		} else {
-			System.out.println("The listed tenants in the apartment:");
+			LOGGER.log(Level.INFO,"The listed tenants in the apartment:");
 			for (String tenantId : tenants) {
 				Tenant tenant = Skankom.getInstance().getTenant(tenantId);
 				if (tenant != null) {
-					System.out.println(" * " + tenant.toString());
+					String c=" * " + tenant.toString();
+					LOGGER.log(Level.INFO,c);
 				}
 			}
 		}

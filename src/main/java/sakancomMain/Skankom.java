@@ -30,7 +30,7 @@ public class Skankom implements Serializable {
 		announcementsStatus = new HashMap<>();
 		floors = new HashMap<>();
 	}
-	private static final Logger LOGGER = Logger.getLogger(Announcement.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Skankom.class.getName());
 
 	public static synchronized Skankom getInstance(){
 		if (instance == null) {
