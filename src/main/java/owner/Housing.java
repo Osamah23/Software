@@ -132,7 +132,7 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public List<String> getTenants() throws IOException {
+	public List<String> getTenants(){
 		ArrayList<String> tenantsIds = new ArrayList<>();
 		for (String floorId: floors) {
 			Floor floor = Skankom.getInstance().getFloor(floorId);
