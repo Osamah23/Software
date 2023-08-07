@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import owner.*;
 
 public class AdminManager{
+	private AdminManager() {}
 	private static Skankom skankom = Skankom.getInstance();
 	private static final Logger LOGGER = Logger.getLogger(AdminManager.class.getName());
 	public static void createAdmin(User user) throws IOException {
