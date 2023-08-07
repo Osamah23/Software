@@ -49,7 +49,7 @@ public class AnnouncementManager {
 		ArrayList<Announcement> announcements = skankom.getAnnouncements(owner);
 
 		if (announcements.isEmpty()) {
-			LOGGER.log(Level.INFO,"No announcements to show");
+			LOGGER.log(Level.INFO,mm);
 			OwnerManager.enterAsOwner(owner);
 			return;
 		}
@@ -76,12 +76,12 @@ public class AnnouncementManager {
 			SakancomApp.entrance();
 		}
 	}
-	
+	private static final String mm="No announcements to show";
 	public static void showAnnouncements(Tenant tenant) throws IOException {
 		ArrayList<Announcement> arrayList = skankom.getAcceptedAnnouncements();
 		Announcement[] announcements = arrayList.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
-			System.out.println("No announcements to show");
+			LOGGER.log(Level.INFO,mm);
 			TenantManager.enterAsTenant(tenant);
 			return;
 		}
