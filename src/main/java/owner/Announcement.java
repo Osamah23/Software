@@ -140,7 +140,8 @@ public class Announcement implements Serializable {
 		}
 		LOGGER.log(Level.INFO,"Available srevices: ");
 		for (String service: services) {
-			System.out.println("* " + service);
+			LOGGER.log(Level.INFO,"* " + service);
+			
 		}
 	}
 
