@@ -24,7 +24,7 @@ public class Owner extends Person implements Serializable {
         save1();
     }
     
-    public ArrayList<String> getOwnedHosuings() {
+    public List<String> getOwnedHosuings() {
     	return ownedHousing;
     }
     

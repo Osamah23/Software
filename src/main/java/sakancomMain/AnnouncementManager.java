@@ -241,7 +241,7 @@ public class AnnouncementManager {
 	}
 
 	public static void addAnnouncement(Owner owner) throws IOException {
-		ArrayList<String> housingIds = owner.getOwnedHosuings();
+		List<String> housingIds = owner.getOwnedHosuings();
 		if (housingIds.isEmpty()) {
 			System.out.println("No housings yet to advertise them.");
 			return;
