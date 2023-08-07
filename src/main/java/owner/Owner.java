@@ -1,6 +1,8 @@
 package owner;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.*;
 import sakancomMain.Skankom;
 
@@ -32,15 +34,16 @@ public class Owner extends Person implements Serializable {
     	ownedHousing.remove(housing);
     	save1();
     }
-
-    public void viewOwnedHousing() throws IOException {
+    private static final Logger LOGGER = Logger.getLogger(Owner.class.getName());
+    public void viewOwnedHousing() {
         if (ownedHousing.isEmpty()) {
-            System.out.println("You don't have any owned housing yet.");
+        	LOGGER.log(Level.INFO,"You don't have any owned housing yet.");
         } else {
-            System.out.println("Your owned housing:");
+        	LOGGER.log(Level.INFO,"Your owned housing:");
             for (String housingId : ownedHousing) {
             	Housing housing = Skankom.getInstance().getHousing(housingId);
-                System.out.println(housing.getLocation());
+            	String m=housing.getLocation();
+            	LOGGER.log(Level.INFO,m);
             }
         }
     }
