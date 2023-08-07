@@ -1,6 +1,9 @@
 package owner;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import sakancomMain.*;
 import java.io.*;
 
@@ -50,27 +53,28 @@ public class Housing implements Serializable {
 		}
 		save();
 	}
-
+	private static final Logger LOGGER = Logger.getLogger(Housing.class.getName());
 	public void addTenant(String tenantId, String apartmentId) throws IOException {
 		removeReservation(tenantId);
 		if (tenantId == null) {
-			System.out.println("Tenant id is null");
+			LOGGER.log(Level.INFO,"Tenant id is null");
 			return;
 		}
 		Apartment apartment = Skankom.getInstance().getApartment(apartmentId);
 		Tenant tenant = Skankom.getInstance().getTenant(tenantId);
 		if (apartment != null && tenant != null) {
 			if (tenant.getBookedHousing() != null) {
-				System.out.println("The Tenant already booking other apartment.");
+				LOGGER.log(Level.INFO,"The Tenant already booking other apartment.");
 				return;
 			}
-			System.out.println("Entre Time to Pay: ");
+			LOGGER.log(Level.INFO,"Entre Time to Pay: ");
 			String timeToPay = SakancomApp.getScanner().nextLine();
 			tenant.setTimeToPay(timeToPay);
 			apartment.addTenant(tenantId);
-			System.out.println(apartment.toString() + " is now resreved to Tenant with id: " + tenantId);
+			String h=apartment.toString() + " is now resreved to Tenant with id: " + tenantId;
+			LOGGER.log(Level.INFO,h);
 		} else {
-			System.out.println("Apartment or Tenant are no longer exist in system");
+			LOGGER.log(Level.INFO,"Apartment or Tenant are no longer exist in system");
 		}
 		save();
 	}
