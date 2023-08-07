@@ -37,7 +37,8 @@ public class Owner extends Person implements Serializable {
     private static final Logger LOGGER = Logger.getLogger(Owner.class.getName());
     public void viewOwnedHousing() {
         if (ownedHousing.isEmpty()) {
-        	LOGGER.log(Level.INFO,"You don't have any owned housing yet.");
+        	String n="You don't have any owned housing yet.";
+        	LOGGER.log(Level.INFO,n);
         } else {
         	LOGGER.log(Level.INFO,"Your owned housing:");
             for (String housingId : ownedHousing) {
