@@ -22,6 +22,9 @@ public class Apartment implements Serializable {
 		this.hasBalcony = hasBalcony;
 		this.tenants = new ArrayList<String>();
 	}
+	public void setId(String a) {
+		this.id=a;
+	}
 
 	public String getId() {
 		return id;
