@@ -1,6 +1,5 @@
 package owner;
 
-import java.util.*;
 import java.io.*;
 import sakancomMain.*;
 
