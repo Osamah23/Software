@@ -138,9 +138,9 @@ public class Announcement implements Serializable {
 			LOGGER.log(Level.INFO, "No services to show");
 			return;	
 		}
-		System.out.println("Available srevices: ");
+		LOGGER.log(Level.INFO,"Available srevices: ");
 		for (String service: services) {
-			LOGGER.log(Level.INFO,"* " + service);
+			System.out.println("* " + service);
 		}
 	}
 
