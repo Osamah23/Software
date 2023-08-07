@@ -74,7 +74,7 @@ public class Apartment implements Serializable {
 		save();
 	}
 
-	public void viewApartmentInfo() throws IOException {
+	public void viewApartmentInfo() {
 		System.out.println(toString());
 		if (tenants.isEmpty()) {
 			System.out.println("There is no tenants yet.");
