@@ -123,7 +123,7 @@ public class ReservationManager {
 	}
 
 	public static void showReservations(Tenant tenant) throws IOException {
-		ArrayList<String> reservations = tenant.getReservedHousing();
+		List<String> reservations = tenant.getReservedHousing();
 		if (reservations.isEmpty()) {
 			System.out.println("No reservations added to show.");
 			return;
@@ -153,7 +153,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void removeReservation(Tenant tenant, ArrayList<String> reservations) throws IOException {
+	public static void removeReservation(Tenant tenant, List<String> reservations) throws IOException {
 		System.out.println("Enter Reservation Number:");
 		int reservationNumber = SakancomApp.scanInt();
 		if (reservationNumber > reservations.size()) {

@@ -95,7 +95,7 @@ public class Tenant extends Person implements Serializable {
 		return bookedHousing;
 	}
 
-	public ArrayList<String> getReservedHousing() {
+	public List<String> getReservedHousing() {
 		return reservedHousingIds;
 	}
 
