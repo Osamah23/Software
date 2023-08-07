@@ -72,7 +72,7 @@ public class Tenant extends Person implements Serializable {
 		save1();
 	}
 	
-	public ArrayList<String> getListedFurniture() {
+	public List<String> getListedFurniture() {
 		return listedFurniture;
 	}
 
