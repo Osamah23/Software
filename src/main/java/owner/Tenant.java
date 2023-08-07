@@ -1,6 +1,8 @@
 package owner;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.*;
 import sakancomMain.*;
 
@@ -98,28 +100,31 @@ public class Tenant extends Person implements Serializable {
 	public List<String> getReservedHousing() {
 		return reservedHousingIds;
 	}
-
-	public void viewBookedHousing() throws IOException {
+	private static final Logger LOGGER = Logger.getLogger(Tenant.class.getName());
+	public void viewBookedHousing(){
 		if (bookedHousing == null) {
-			System.out.println("You haven't booked any housing yet.");
+			LOGGER.log(Level.INFO,"You haven't booked any housing yet.");
 		} else {
 			Housing housing = Skankom.getInstance().getHousing(bookedHousing);
 			if (housing != null) {
-				System.out.println("Your booked housing:");
-				System.out.println(housing.getLocation());
+				String a="Your booked housing:\n"+housing.getLocation();
+				LOGGER.log(Level.INFO,a);
+				
 			}
 		}
 	}
 
-	public void viewListedFurniture() throws IOException {
+	public void viewListedFurniture(){
 		if (listedFurniture.isEmpty()) {
-			System.out.println("You haven't listed any furniture for sale.");
+			LOGGER.log(Level.INFO,"You haven't listed any furniture for sale.");
 		} else {
-			System.out.println("Your listed furniture for sale:");
+			LOGGER.log(Level.INFO,"Your listed furniture for sale:");
 			for (String furnitureId : listedFurniture) {
 				Furniture furniture = Skankom.getInstance().getFurniture(furnitureId);
 				if (furniture != null) {
-					System.out.println(furniture.getName() + " - Price: " + furniture.getPrice());
+					String c=furniture.getName() + " - Price: " + furniture.getPrice();
+					LOGGER.log(Level.INFO,c);
+					
 				}
 			}
 		}
