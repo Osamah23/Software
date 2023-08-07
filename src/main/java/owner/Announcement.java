@@ -1,6 +1,8 @@
 package owner;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
@@ -129,10 +131,11 @@ public class Announcement implements Serializable {
 		this.housingId = housing.getId();
 		save();
 	}
-
+	private static final Logger LOGGER = Logger.getLogger(Announcement.class.getName());
 	public void viewServices() {
 		if (services.isEmpty()) {
-			System.out.println("No services to show");
+			
+			LOGGER.log(Level.INFO, "No services to show");
 			return;	
 		}
 		System.out.println("Available srevices: ");
