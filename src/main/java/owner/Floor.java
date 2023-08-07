@@ -1,6 +1,8 @@
 package owner;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.*;
 import sakancomMain.Skankom;
 
@@ -52,13 +54,14 @@ public class Floor implements Serializable {
 		apartments.remove(apartment.getId());
 		save();
 	}
-
-	public void viewApartments() throws IOException {
-		System.out.println(toString());
+	private static final Logger LOGGER = Logger.getLogger(Floor.class.getName());
+	public void viewApartments(){
+		String a=toString();
+		LOGGER.log(Level.INFO,a);
 		if (apartments.isEmpty()) {
-			System.out.println("You haven't listed any apartments yet.");
+			LOGGER.log(Level.INFO,"You haven't listed any apartments yet.");
 		} else {
-			System.out.println("Your listed apartments:");
+			LOGGER.log(Level.INFO,"Your listed apartments:");
 			for (String apartmentId : apartments) {
 				Apartment apartment = Skankom.getInstance().getApartment(apartmentId);
 				if (apartment != null) {
