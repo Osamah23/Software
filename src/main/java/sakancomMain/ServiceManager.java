@@ -51,20 +51,20 @@ public class ServiceManager {
 		System.out.println("]");
 	}
 	
-	public static String removeService(ArrayList<String> services, Announcement announcement) throws IOException {
+	public static String removeService(List<String> list, Announcement announcement) throws IOException {
 		System.out.println("Enter Service Number:");
 		int serviceNumber = SakancomApp.scanInt();
-		if (serviceNumber > services.size()) {
+		if (serviceNumber > list.size()) {
 			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
-				return removeService(services, announcement);
+				return removeService(list, announcement);
 			}
 			return null;
 		}
 		System.out.println("1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
 		if (!remove) { return null; }
-		String service = services.get(serviceNumber - 1);
+		String service = list.get(serviceNumber - 1);
 		String serviceInfo = service;
 		announcement.removeService(service);
 		return serviceInfo;

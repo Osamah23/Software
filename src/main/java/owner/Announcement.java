@@ -80,7 +80,7 @@ public class Announcement implements Serializable {
 		save();
 	}
 
-	public ArrayList<String> getServices() {
+	public List<String> getServices() {
 		return services;
 	}
 
