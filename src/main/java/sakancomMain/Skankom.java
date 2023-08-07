@@ -2,6 +2,8 @@ package sakancomMain;
 import owner.*;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Skankom implements Serializable {
 	private static Skankom instance;
@@ -28,14 +30,14 @@ public class Skankom implements Serializable {
 		announcementsStatus = new HashMap<>();
 		floors = new HashMap<>();
 	}
+	private static final Logger LOGGER = Logger.getLogger(Announcement.class.getName());
 
 	public static synchronized Skankom getInstance(){
 		if (instance == null) {
 			try {
 				instance = Skankom.readFromFile();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOGGER.log(Level.INFO, "error in read from file");
 			}
 		}
 		return instance;
