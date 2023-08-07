@@ -180,12 +180,13 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public void viewFloors() throws IOException {
-		System.out.println(toString());
+	public void viewFloors(){
+		String h=toString();
+		LOGGER.log(Level.INFO,h);
 		if (floors.isEmpty()) {
-			System.out.println("No floors in this housing yet.");
+			LOGGER.log(Level.INFO,"No floors in this housing yet.");
 		} else {
-			System.out.println("Floors in this housing:");
+			LOGGER.log(Level.INFO,"Floors in this housing:");
 			for (String floorId : floors) {
 				Floor floor = Skankom.getInstance().getFloor(floorId);
 				floor.viewApartments();
@@ -193,20 +194,21 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public void viewTenants() throws IOException {
+	public void viewTenants(){
 		if (!isStudentHousing) {
-			System.out.println("Sorry, we cannot show tenants for non student housing.");
+			LOGGER.log(Level.INFO,"Sorry, we cannot show tenants for non student housing.");
 			return;
 		}
 		List<String> tenants = getTenants();
 		if (tenants.isEmpty()) {
-			System.out.println("No tenants in this housing yet.");
+			LOGGER.log(Level.INFO,"No tenants in this housing yet.");
 			return;
 		}
 		for (String tenantId: tenants) {
 			Tenant tenant = Skankom.getInstance().getTenant(tenantId);
 			if (tenant != null) {
-				System.out.println("* " + tenant.getTenantInfo());
+				String j="* " + tenant.getTenantInfo();
+				LOGGER.log(Level.INFO,j);
 			}
 		}
 	}
