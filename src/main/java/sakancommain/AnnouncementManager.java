@@ -15,7 +15,7 @@ public class AnnouncementManager {
 		Collection<Announcement> collection = skankom.getAnnouncements().values();
 		Announcement[] announcements = collection.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
-			LOGGER.log(Level.INFO,"No announcements to show");
+			LOGGER.log(Level.INFO,mm);
 			AdminManager.enterAsAdmin(admin);
 			return;
 		}
@@ -56,12 +56,13 @@ public class AnnouncementManager {
 		int counter = 1;
 		for (Announcement announcement: announcements) {
 			AnnouncementStatus status = skankom.getAnnouncementStatus(announcement.getId());
-			System.out.println(counter + ") Announcement Title: " + announcement.getTitle() + 
+			String na=counter + ") Announcement Title: " + announcement.getTitle() + 
 					", Description: " + announcement.getDescription()
-					+ ", Status: " + getStatusString(status));
+					+ ", Status: " + getStatusString(status);
+			LOGGER.log(Level.INFO,na);
 			counter++;
 		}
-		System.out.println("Choose one of the following options:\n1) Remove Announcement \n2) Return Back \n3) Exit");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Remove Announcement \n2) Return Back \n3) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -87,14 +88,15 @@ public class AnnouncementManager {
 		}
 		int counter = 1;
 		for (Announcement announcement: announcements) {
-			System.out.println(counter + ") " + announcement.toString());
+			String n=counter + ") " + announcement.toString();
+			LOGGER.log(Level.INFO,n);
 			counter++;
 		}
 		showAnnouncementsDetails(tenant, announcements);
 	}
 	
 	public static void showAnnouncementsDetails(Tenant tenant, Announcement[] announcements) throws IOException {
-		System.out.println("Choose one of the following options:\n1) Choose Announcement \n2) Return Back \n3) Exit");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Choose Announcement \n2) Return Back \n3) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -110,22 +112,23 @@ public class AnnouncementManager {
 	}
 	
 	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) throws IOException {
-		System.out.println("Enter Announcement Number:");
+		LOGGER.log(Level.INFO,"Enter Announcement Number:");
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
-			System.out.println("The entered number is not exist.\n1) Try Again 2) Cancel");	
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again 2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
 				chooseAnnouncement(tenant, announcements);
 			}
 			return;
 		}
-		System.out.println("1) Show Housing Apartments \n2) Show Housing Tenants \n3) Show Housing servcies \n4) Show Housing Photos \n5) Return Back");
+		LOGGER.log(Level.INFO,"1) Show Housing Apartments \n2) Show Housing Tenants \n3) Show Housing servcies \n4) Show Housing Photos \n5) Return Back");
 		int choice = SakancomApp.scanInt();
 		Announcement announcement =  announcements[announcementNumber - 1];
 		String housingId = announcement.getHousing();
 		Housing housing = skankom.getHousing(housingId);
 		if (housing == null) {
-			System.out.println("Cannot find Housing with id: " + housingId);
+			String h="Cannot find Housing with id: " + housingId;
+			LOGGER.log(Level.INFO,h);
 			chooseAnnouncement(tenant, announcements);
 			return;
 		}
