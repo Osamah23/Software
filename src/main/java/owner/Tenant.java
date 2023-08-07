@@ -103,7 +103,8 @@ public class Tenant extends Person implements Serializable {
 	private static final Logger LOGGER = Logger.getLogger(Tenant.class.getName());
 	public void viewBookedHousing(){
 		if (bookedHousing == null) {
-			LOGGER.log(Level.INFO,"You haven't booked any housing yet.");
+			String b="You haven't booked any housing yet.";
+			LOGGER.log(Level.INFO,b);
 		} else {
 			Housing housing = Skankom.getInstance().getHousing(bookedHousing);
 			if (housing != null) {
@@ -116,7 +117,8 @@ public class Tenant extends Person implements Serializable {
 
 	public void viewListedFurniture(){
 		if (listedFurniture.isEmpty()) {
-			LOGGER.log(Level.INFO,"You haven't listed any furniture for sale.");
+			String k="You haven't listed any furniture for sale.";
+			LOGGER.log(Level.INFO,k);
 		} else {
 			LOGGER.log(Level.INFO,"Your listed furniture for sale:");
 			for (String furnitureId : listedFurniture) {
