@@ -2,25 +2,31 @@ package sakancommain;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import owner.*;
 
 public class AnnouncementManager {
 	private static Skankom skankom = Skankom.getInstance();
-
+	private AnnouncementManager() {}
+	private static final Logger LOGGER = Logger.getLogger(AnnouncementManager.class.getName());
 	public static void showAnnouncements(Admin admin) throws IOException {
 		Collection<Announcement> collection = skankom.getAnnouncements().values();
 		Announcement[] announcements = collection.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
-			System.out.println("No announcements to show");
+			LOGGER.log(Level.INFO,"No announcements to show");
 			AdminManager.enterAsAdmin(admin);
 			return;
 		}
 		int counter = 1;
 		for (Announcement announcement: announcements) {
-			System.out.println(counter + ") " + announcement.toString());
+			String a=counter + ") " + announcement.toString();
+			LOGGER.log(Level.INFO,a);
 			counter++;
 		}
-		System.out.println("Choose one of the following options:\n1) Accept/Reject Announcement \n2) Remove Announcement \n3) Return Back \n4) Exit");
+		
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Accept/Reject Announcement \n2) Remove Announcement \n3) Return Back \n4) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -43,7 +49,7 @@ public class AnnouncementManager {
 		ArrayList<Announcement> announcements = skankom.getAnnouncements(owner);
 
 		if (announcements.isEmpty()) {
-			System.out.println("No announcements to show");
+			LOGGER.log(Level.INFO,"No announcements to show");
 			OwnerManager.enterAsOwner(owner);
 			return;
 		}
