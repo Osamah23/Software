@@ -18,7 +18,6 @@ public class ApartmentManager {
 		int choice = SakancomApp.scanInt();
 		if (choice == 1) {
 			Apartment apartment = new Apartment( numberOfBathrooms, numberOfBedrooms, hasBalcony);
-			apartment.setId(floor.getId());
 			skankom.addApartment(apartment);
 			return apartment;
 		}

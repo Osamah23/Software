@@ -20,7 +20,7 @@ public class ReservationManager {
 		}
 		for (Housing housing: housings) {
 			System.out.println(housing.toString() + "\nReservations:\n[");
-			ArrayList<String> tenants = null;
+			List<String> tenants = null;
 			try {
 				tenants = housing.getTenants();
 			} catch (IOException e) {

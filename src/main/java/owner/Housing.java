@@ -132,7 +132,7 @@ public class Housing implements Serializable {
 		}
 	}
 
-	public ArrayList<String> getTenants() throws IOException {
+	public List<String> getTenants() throws IOException {
 		ArrayList<String> tenantsIds = new ArrayList<>();
 		for (String floorId: floors) {
 			Floor floor = Skankom.getInstance().getFloor(floorId);
@@ -170,7 +170,7 @@ public class Housing implements Serializable {
 		} else {
 			System.out.println("* " + floors.size() + " floors in this housing.");
 		}
-		ArrayList<String> tenants = getTenants();
+		List<String> tenants = getTenants();
 		if (tenants.isEmpty()) {
 			System.out.println("* No tenants in this housing yet.");
 		} else {
@@ -196,7 +196,7 @@ public class Housing implements Serializable {
 			System.out.println("Sorry, we cannot show tenants for non student housing.");
 			return;
 		}
-		ArrayList<String> tenants = getTenants();
+		List<String> tenants = getTenants();
 		if (tenants.isEmpty()) {
 			System.out.println("No tenants in this housing yet.");
 			return;
