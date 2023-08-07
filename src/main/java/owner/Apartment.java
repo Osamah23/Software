@@ -78,7 +78,8 @@ public class Apartment implements Serializable {
 	}
 
 	public void viewApartmentInfo() {
-		System.out.println(toString());
+		String m=toString();
+		LOGGER.log(Level.INFO,m);
 		if (tenants.isEmpty()) {
 			LOGGER.log(Level.INFO,"There is no tenants yet.");
 		} else {
