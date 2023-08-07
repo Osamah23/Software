@@ -61,7 +61,7 @@ public class Announcement implements Serializable {
 				photosArray.add(source);
 			} 
 			 catch (IOException e) {
-				 e.printStackTrace();
+				 LOGGER.log(Level.INFO, "error in getting photos");
 			} 
 		}
 		return photosArray;
