@@ -59,7 +59,8 @@ public class Floor implements Serializable {
 		String a=toString();
 		LOGGER.log(Level.INFO,a);
 		if (apartments.isEmpty()) {
-			LOGGER.log(Level.INFO,"You haven't listed any apartments yet.");
+			String t="You haven't listed any apartments yet.";
+			LOGGER.log(Level.INFO,t);
 		} else {
 			LOGGER.log(Level.INFO,"Your listed apartments:");
 			for (String apartmentId : apartments) {
