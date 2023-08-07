@@ -1,12 +1,10 @@
 package sakancomMain;
 
 import java.io.*;
-import java.util.*;
-import java.awt.*;
+import java.util.List;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.*;
-import javax.swing.*;
 import owner.*;
 
 public class PhotoManager {
@@ -55,7 +53,7 @@ public class PhotoManager {
 	}
 
 	public static void showPhotos(Announcement announcement) {
-		ArrayList<BufferedImage> photos = announcement.getPhotos();
+		List<BufferedImage> photos = announcement.getPhotos();
 		if (photos.isEmpty()) {
 			System.out.println("No photos added yet to " + announcement.toString());
 			return;

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import java.util.*;
+import java.util.List;
+
 import javax.imageio.*;
 import javax.swing.*;
 
@@ -24,7 +26,7 @@ public class PhotoShower extends JFrame {
 		super.setVisible(true);
 	}
 
-	public void paintAllPhotos(ArrayList<BufferedImage> photos) {
+	public void paintAllPhotos(List<BufferedImage> photos) {
 		for(int i=0;  i< photos.size(); i++) {
 			paintPhoto(photos.get(i));
 		}

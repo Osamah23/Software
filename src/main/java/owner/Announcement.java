@@ -4,7 +4,6 @@ import java.util.*;
 
 import javax.imageio.ImageIO;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
@@ -52,7 +51,7 @@ public class Announcement implements Serializable {
 		save();
 	}
 
-	public ArrayList<BufferedImage> getPhotos() {
+	public List<BufferedImage> getPhotos() {
 		ArrayList<BufferedImage> photosArray = new ArrayList<BufferedImage>();
 		for (String url: photos) {
 			try {
