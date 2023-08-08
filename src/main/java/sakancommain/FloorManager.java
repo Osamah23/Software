@@ -57,7 +57,8 @@ public class FloorManager {
 		for (String floorId: housing.getFloors()) {
 			Floor floor = skankom.getFloor(floorId);
 			if (floor != null) {
-				LOGGER.log(Level.INFO,floor.toString());
+				String q=floor.toString();
+				LOGGER.log(Level.INFO,q);
 			}
 		}
 		LOGGER.log(Level.INFO,"]");
