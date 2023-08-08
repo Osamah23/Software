@@ -66,15 +66,18 @@ public class TenantManager {
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
-			LOGGER.log(Level.INFO,tenant.toString());
+			String w=tenant.toString();
+			LOGGER.log(Level.INFO,w);
 			Housing bookedHousing = skankom.getHousing(tenant.getBookedHousing());
 			if (bookedHousing != null) {
 				Owner owner = skankom.getOwner(bookedHousing.getOwnerId());
 				if (owner != null) {
-					LOGGER.log(Level.INFO,owner.toString());
+					String e=owner.toString();
+					LOGGER.log(Level.INFO,e);
 				}
 			}
-			LOGGER.log(Level.INFO,"Time to pay rent: " + tenant.getTimeToPay());
+			String m="Time to pay rent: " + tenant.getTimeToPay();
+			LOGGER.log(Level.INFO,m);
 			break;
 		case 2:
 			LOGGER.log(Level.INFO,"Delete Booking Confirmation:\n1) Confirm \n2) Cancel");
