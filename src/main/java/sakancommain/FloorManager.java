@@ -4,6 +4,7 @@ import java.io.IOException;
 import owner.*;
 
 public class FloorManager {
+	private FloorManager () {}
 	private static Skankom skankom = Skankom.getInstance();
 
 	public static void manageFloors(Housing housing) throws IOException {
