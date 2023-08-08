@@ -63,8 +63,7 @@ public class ApartmentManager {
 	public static void showApartmentDetails(List<Apartment> apartments) throws IOException {
 		LOGGER.log(Level.INFO,"Choose one of the following options: \n1) Show Apartment Details \n2) Return Back");
 		int choice = SakancomApp.scanInt();
-		switch (choice) {
-		case 1:
+		if (choice==1) {
 			LOGGER.log(Level.INFO,"Enter Apartment Number:");
 			int apartmentNumber = SakancomApp.scanInt();
 			if (apartmentNumber > apartments.size()) {
@@ -77,8 +76,6 @@ public class ApartmentManager {
 			Apartment apartment = apartments.get(apartmentNumber - 1);
 			apartment.viewApartmentInfo();
 			showApartmentDetails(apartments);
-		default:
-			return;
 		}
 	}
 
