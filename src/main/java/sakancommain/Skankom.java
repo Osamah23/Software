@@ -243,9 +243,9 @@ public class Skankom implements Serializable {
 
 	public List<Announcement> getAnnouncements(Owner owner) {
 		Collection<Announcement> collection = getAnnouncements().values();
-		Announcement[] announcements = collection.toArray(new Announcement[0]);
+		Announcement[] announcements1 = collection.toArray(new Announcement[0]);
 		ArrayList<Announcement> announs = new ArrayList<>();
-		for (Announcement announcement: announcements) {
+		for (Announcement announcement: announcements1) {
 			if (announcement.getOwner().equals(owner.getId())) {
 				announs.add(announcement);
 			}
