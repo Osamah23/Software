@@ -38,7 +38,7 @@ public class ApartmentManager {
 		if (floor.getApartments().isEmpty()) {
 			String n="No apartments added yet to " + floor.toString();
 			LOGGER.log(Level.INFO,n);
-			return null;
+			return Collections.emptyList();
 		}
 		int counter = 1;
 		ArrayList<Apartment> apartments = new ArrayList<>();
