@@ -5,6 +5,7 @@ import owner.*;
 
 public class TenantManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private TenantManager() {}
 
 	public static void createTenant(User user) throws IOException {
 		System.out.println("Enter Tenant Name:");
