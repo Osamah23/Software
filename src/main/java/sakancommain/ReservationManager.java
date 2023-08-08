@@ -98,6 +98,8 @@ public class ReservationManager {
 		case 2:
 			showAnnoucements(owner, housings);
 			break;
+		default:
+			
 		}
 	}
 
