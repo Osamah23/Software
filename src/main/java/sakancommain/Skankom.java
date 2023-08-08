@@ -266,17 +266,17 @@ public class Skankom implements Serializable {
 	}
 
 	public List<Announcement> getAcceptedAnnouncements() {
-		ArrayList<Announcement> announcements = new ArrayList<>();
+		ArrayList<Announcement> announcements1 = new ArrayList<>();
 		for (String key: announcementsStatus.keySet()) {
 			AnnouncementStatus status = announcementsStatus.get(key);
 			if (status == AnnouncementStatus.ACCEPTED) {
 				Announcement announcement = getAnnouncement(key);
 				if (announcement != null) {
-					announcements.add(announcement);
+					announcements1.add(announcement);
 				}
 			}
 		}
-		return announcements;
+		return announcements1;
 	}
 
 	public void addAnnouncementStatus(Announcement announcement, AnnouncementStatus status) throws IOException {
