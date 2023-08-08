@@ -61,7 +61,7 @@ public class FurnitureManager {
 	public static List<Furniture> showFurniture(Tenant tenant) {
 		if (tenant.getListedFurniture().isEmpty()) {
 			LOGGER.log(Level.INFO,"No furnitures added for sale yet");
-			return null;
+			return Collections.emptyList();
 		}
 		int counter = 1;
 		ArrayList<Furniture> furnitures = new ArrayList<>();
