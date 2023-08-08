@@ -26,7 +26,8 @@ public class TenantManager {
 		user.setUserId(tenant.getId());
 		skankom.addTenant(tenant);
 		skankom.addUser(user);
-		LOGGER.log(Level.INFO,tenant.toString() + " is created.");
+		String a=tenant.toString() + " is created.";
+		LOGGER.log(Level.INFO,a);
 		enterAsTenant(tenant);
 	}
 
