@@ -91,7 +91,7 @@ public class ApartmentManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return null; }
+		if (Boolean.TRUE.equals(!remove)) { return null; }
 		Apartment apartment = apartments.get(apartmentNumber - 1);
 		String apartmentInfo = apartment.toString();
 		floor.removeApartment(apartment);
