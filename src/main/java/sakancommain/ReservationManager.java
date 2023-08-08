@@ -147,13 +147,9 @@ public class ReservationManager {
 		}
 		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Remove Reservation \n2) Return Back");
 		int choice = SakancomApp.scanInt();
-		switch (choice) {
-		case 1:
+		if(choice==1) {
 			removeReservation(tenant, reservations);
 			showReservations(tenant);
-			break;
-		default:
-			break;
 		}
 	}
 
