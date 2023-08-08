@@ -110,7 +110,8 @@ public class HousingManager {
 		}
 		int counter = 1;
 		for (Housing housing: housings) {
-			LOGGER.log(Level.INFO,counter + ") " + housing.toString());
+			String m=counter + ") " + housing.toString();
+			LOGGER.log(Level.INFO,m);
 			counter++;
 		}
 		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Edit Housing \n2) Remove Housing \n3) Return Back \n4) Exit");
@@ -123,6 +124,7 @@ public class HousingManager {
 		case 2:
 			removeHousing(housings);
 			OwnerManager.enterAsOwner(owner);
+			break;
 		case 3:
 			OwnerManager.enterAsOwner(owner);
 			break;
