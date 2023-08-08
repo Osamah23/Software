@@ -11,7 +11,7 @@ public class ReservationManager {
 	private static Skankom skankom = Skankom.getInstance();
 	private static final Logger LOGGER = Logger.getLogger(ReservationManager.class.getName());
 
-	public static void showReservations() throws IOException {
+	public static void showReservations() {
 		Collection<Housing> collection = skankom.getHousings().values();
 		Housing[] housings = collection.toArray(new Housing[0]);
 		if (housings.length == 0) {
