@@ -170,6 +170,7 @@ public class HousingManager {
 			owner.removeHousing(housing);
 		}
 		skankom.removeHousing(housing);
-		LOGGER.log(Level.INFO,housing.toString() + " is deleted");
+		String v=housing.toString() + " is deleted";
+		LOGGER.log(Level.INFO,v);
 	}
 }
