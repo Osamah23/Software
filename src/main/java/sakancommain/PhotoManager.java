@@ -55,7 +55,8 @@ public class PhotoManager {
 	public static void showPhotos(Announcement announcement) {
 		List<BufferedImage> photos = announcement.getPhotos();
 		if (photos.isEmpty()) {
-			LOGGER.log(Level.INFO,"No photos added yet to " + announcement.toString());
+			String u="No photos added yet to " + announcement.toString();
+			LOGGER.log(Level.INFO,u);
 			return;
 		}
 		PhotoShower photoShower = new PhotoShower();
