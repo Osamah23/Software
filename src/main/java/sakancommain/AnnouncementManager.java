@@ -15,7 +15,7 @@ public class AnnouncementManager {
 		Collection<Announcement> collection = skankom.getAnnouncements().values();
 		Announcement[] announcements = collection.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
-			LOGGER.log(Level.INFO,mm);
+			LOGGER.log(Level.INFO,n);
 			AdminManager.enterAsAdmin(admin);
 			return;
 		}
@@ -49,7 +49,7 @@ public class AnnouncementManager {
 		ArrayList<Announcement> announcements = skankom.getAnnouncements(owner);
 
 		if (announcements.isEmpty()) {
-			LOGGER.log(Level.INFO,mm);
+			LOGGER.log(Level.INFO,n);
 			OwnerManager.enterAsOwner(owner);
 			return;
 		}
@@ -77,12 +77,12 @@ public class AnnouncementManager {
 			SakancomApp.entrance();
 		}
 	}
-	private static final String mm="No announcements to show";
+	private static final String n="No announcements to show";
 	public static void showAnnouncements(Tenant tenant) throws IOException {
 		ArrayList<Announcement> arrayList = skankom.getAcceptedAnnouncements();
 		Announcement[] announcements = arrayList.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
-			LOGGER.log(Level.INFO,mm);
+			LOGGER.log(Level.INFO,n);
 			TenantManager.enterAsTenant(tenant);
 			return;
 		}
