@@ -146,6 +146,7 @@ public class AnnouncementManager {
 			break;
 		case 4:
 			announcement.viewPhotos();
+			break;
 		default:
 		}
 	}
@@ -205,6 +206,7 @@ public class AnnouncementManager {
 				String j="Apartment with: " + apartment.toString() + " reservation request is sent.";
 				LOGGER.log(Level.INFO,j);
 			}
+			break;
 			default:
 		}
 	}
