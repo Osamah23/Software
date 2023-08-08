@@ -108,7 +108,8 @@ public class FloorManager {
 		case 2:
 			String apartmentInfo = ApartmentManager.deleteApartment(floor);
 			if (apartmentInfo != null) {
-				LOGGER.log(Level.INFO,"Apartment with Info: " + apartmentInfo + " is deleted from " + floor.toString());
+				String u="Apartment with Info: " + apartmentInfo + " is deleted from " + floor.toString();
+				LOGGER.log(Level.INFO,u);
 			}
 			return createFloor(housing, floor);
 		case 3:
