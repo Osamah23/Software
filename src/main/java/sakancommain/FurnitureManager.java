@@ -69,7 +69,8 @@ public class FurnitureManager {
 			Furniture furniture = skankom.getFurniture(furnitureId);
 			if (furniture != null) {
 				furnitures.add(furniture);
-				LOGGER.log(Level.INFO,counter + ") " + furniture.toString());
+				String j=counter + ") " + furniture.toString();
+				LOGGER.log(Level.INFO,j);
 				counter++;
 			}
 		}
