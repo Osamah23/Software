@@ -18,7 +18,8 @@ public class FloorManager {
 		case 1:
 			Floor floor = new Floor(housing.getId(), housing.getFloors().size() + 1);
 			floor = createFloor(housing, floor);
-			LOGGER.log(Level.INFO,floor.toString() + " is created to Housing with: " + housing.toString());
+			String s=floor.toString() + " is created to Housing with: " + housing.toString();
+			LOGGER.log(Level.INFO,s);
 			housing.addFloor(floor);
 			skankom.addFloor(floor);
 			manageFloors(housing);
