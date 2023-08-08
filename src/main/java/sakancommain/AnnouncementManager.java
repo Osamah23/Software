@@ -247,7 +247,7 @@ public class AnnouncementManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return; }
+		if (Boolean.TRUE.equals(!remove)) { return; }
 		Announcement announcement = announcements[announcementNumber - 1];
 		skankom.removeAnnouncement(announcement);
 		LOGGER.log(Level.INFO,"Announcement with Title: " + announcement.getTitle() + " is deleted");
