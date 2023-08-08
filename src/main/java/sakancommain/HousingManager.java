@@ -6,6 +6,7 @@ import owner.*;
 
 public class HousingManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private HousingManager() {}
 
 	public static Housing createHousing(Owner owner) throws IOException {
 		System.out.println("Enter Location:");
