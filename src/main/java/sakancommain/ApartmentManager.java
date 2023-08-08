@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import owner.*;
 
 public class ApartmentManager {
+	private ApartmentManager () {}
 	private static Skankom skankom = Skankom.getInstance();
 	 private static final Logger LOGGER = Logger.getLogger(ApartmentManager.class.getName());
 	public static Apartment createApartment(Floor floor) throws IOException {
