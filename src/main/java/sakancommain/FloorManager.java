@@ -48,7 +48,8 @@ public class FloorManager {
 
 	public static void showFloors(Housing housing) {
 		if (housing.getFloors().isEmpty()) {
-			LOGGER.log(Level.INFO,"No floors added yet to " + housing.toString());
+			String m="No floors added yet to " + housing.toString();
+			LOGGER.log(Level.INFO,m);
 			return;
 		}
 		LOGGER.log(Level.INFO,"Floors in " + housing.toString() + " are: [");
