@@ -113,7 +113,8 @@ public class SakancomApp {
 			TenantManager.createTenant(user);
 			break;
 		default:
-			LOGGER.log(Level.INFO,"User type" + user.getUserType() + " does not exist.");
+			String t="User type" + user.getUserType() + " does not exist.";
+			LOGGER.log(Level.INFO,t);
 			entrance();
 		}
 	}
