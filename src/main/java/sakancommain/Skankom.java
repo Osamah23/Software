@@ -241,7 +241,7 @@ public class Skankom implements Serializable {
 		save();
 	}
 
-	public ArrayList<Announcement> getAnnouncements(Owner owner) {
+	public List<Announcement> getAnnouncements(Owner owner) {
 		Collection<Announcement> collection = getAnnouncements().values();
 		Announcement[] announcements = collection.toArray(new Announcement[0]);
 		ArrayList<Announcement> announs = new ArrayList<>();

@@ -46,7 +46,7 @@ public class AnnouncementManager {
 	}
 
 	public static void showAnnouncements(Owner owner) throws IOException {
-		ArrayList<Announcement> announcements = skankom.getAnnouncements(owner);
+		List<Announcement> announcements = skankom.getAnnouncements(owner);
 
 		if (announcements.isEmpty()) {
 			LOGGER.log(Level.INFO,NOAN);
