@@ -23,7 +23,7 @@ public class SakancomApp {
 		Scanner scanner = getScanner();
 		while (!scanner.hasNextInt()) {
 			scanner.next();
-			System.out.print("Invalid integer input. Please enter an integer: ");
+			LOGGER.log(Level.INFO,"Invalid integer input. Please enter an integer: ");
 		}
 		int number = scanner.nextInt();
 		return number;
