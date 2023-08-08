@@ -43,7 +43,6 @@ public class PhotoManager {
 		LOGGER.log(Level.INFO,"Enter Photo URL:");
 		String url = SakancomApp.getScanner().nextLine();
 		try {
-			BufferedImage source = ImageIO.read(new FileInputStream((url)));
 			announcement.addPhoto(url);
 			LOGGER.log(Level.INFO,"Your photo added successfully");
 		} 
