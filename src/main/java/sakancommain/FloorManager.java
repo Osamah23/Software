@@ -26,7 +26,8 @@ public class FloorManager {
 		case 2:
 			String floorInfo = deleteFloor(housing);
 			if (floorInfo != null) {
-				LOGGER.log(Level.INFO,floorInfo + " is deleted from Housing with: " + housing.toString());
+				String v=floorInfo + " is deleted from Housing with: " + housing.toString();
+				LOGGER.log(Level.INFO,v);
 			}
 			manageFloors(housing);
 			break;
