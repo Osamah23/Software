@@ -23,7 +23,8 @@ public class FurnitureManager {
 		case 2:
 			String furnitureInfo = deleteFurniture(tenant);
 			if (furnitureInfo != null) {
-				LOGGER.log(Level.INFO,"Furniture with Info: " + furnitureInfo + " is deleted from " + tenant.toString());
+				String h="Furniture with Info: " + furnitureInfo + " is deleted from " + tenant.toString();
+				LOGGER.log(Level.INFO,h);
 			}
 			manageFurniture(tenant);
 			break;
