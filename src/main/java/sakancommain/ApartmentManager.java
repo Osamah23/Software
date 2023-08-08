@@ -29,12 +29,12 @@ public class ApartmentManager {
 	}
 
 	public static String deleteApartment(Floor floor) throws IOException {
-		ArrayList<Apartment> apartments = getApartments(floor);
+		List<Apartment> apartments = getApartments(floor);
 		if (apartments == null) { return null; }
 		return removeApartment(apartments, floor);
 	}
 
-	public static ArrayList<Apartment> getApartments(Floor floor) {
+	public static List<Apartment> getApartments(Floor floor) {
 		if (floor.getApartments().isEmpty()) {
 			LOGGER.log(Level.INFO,"No apartments added yet to " + floor.toString());
 			return null;
@@ -53,12 +53,12 @@ public class ApartmentManager {
 	}
 
 	public static void showApartments(Floor floor) throws IOException {
-		ArrayList<Apartment> apartments = getApartments(floor);
+		List<Apartment> apartments = getApartments(floor);
 		if (apartments == null) { return; }
 		showApartmentDetails(apartments);
 	}
 
-	public static void showApartmentDetails(ArrayList<Apartment> apartments) throws IOException {
+	public static void showApartmentDetails(List<Apartment> apartments) throws IOException {
 		LOGGER.log(Level.INFO,"Choose one of the following options: \n1) Show Apartment Details \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
@@ -80,7 +80,7 @@ public class ApartmentManager {
 		}
 	}
 
-	public static String removeApartment(ArrayList<Apartment> apartments, Floor floor) throws IOException {
+	public static String removeApartment(List<Apartment> apartments, Floor floor) throws IOException {
 		LOGGER.log(Level.INFO,"Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.size()) {

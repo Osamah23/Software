@@ -89,7 +89,7 @@ public class FloorManager {
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
-			Apartment apartment = ApartmentManager.createApartment(floor);
+			Apartment apartment = ApartmentManager.createApartment();
 			if (apartment != null) {
 				floor.addApartment(apartment);
 				System.out.println("Apartment with Info: " + apartment.toString() + " is added to " + floor.toString());
