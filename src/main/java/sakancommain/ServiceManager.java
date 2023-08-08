@@ -72,7 +72,7 @@ public class ServiceManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return null; }
+		if (Boolean.TRUE.equals(!remove)) { return null; }
 		String service = list.get(serviceNumber - 1);
 		String serviceInfo = service;
 		announcement.removeService(service);
