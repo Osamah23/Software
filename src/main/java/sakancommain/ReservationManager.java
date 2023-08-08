@@ -20,7 +20,8 @@ public class ReservationManager {
 			return;
 		}
 		for (Housing housing: housings) {
-			LOGGER.log(Level.INFO,housing.toString() + "\nReservations:\n[");
+			String k=housing.toString() + "\nReservations:\n[";
+			LOGGER.log(Level.INFO,k);
 			List<String> tenants = null;
 				tenants = housing.getTenants();
 			
