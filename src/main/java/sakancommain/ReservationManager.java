@@ -2,12 +2,12 @@ package sakancommain;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import owner.*;
 
 public class ReservationManager {
+	private ReservationManager () {}
 	private static Skankom skankom = Skankom.getInstance();
 	private static final Logger LOGGER = Logger.getLogger(ReservationManager.class.getName());
 
