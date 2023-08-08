@@ -25,8 +25,8 @@ public class SakancomApp {
 			scanner.next();
 			LOGGER.log(Level.INFO,"Invalid integer input. Please enter an integer: ");
 		}
-		int number = scanner.nextInt();
-		return number;
+		
+		return scanner.nextInt();
 	}
 
 	public static double scanDouble() {
