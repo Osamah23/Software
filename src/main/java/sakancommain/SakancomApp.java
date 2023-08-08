@@ -144,11 +144,13 @@ public class SakancomApp {
 			if (tenant != null) {
 				TenantManager.enterAsTenant(tenant);
 			} else {
-				LOGGER.log(Level.INFO,"Cannot find a tenant with userName: " + user.getUserName());
+				String q="Cannot find a tenant with userName: " + user.getUserName();
+				LOGGER.log(Level.INFO,q);
 			}
 			break;
 		default:
-			LOGGER.log(Level.INFO,"User type" + user.getUserType() + " does not exist.");
+			String k="User type" + user.getUserType() + " does not exist.";
+			LOGGER.log(Level.INFO,k);
 			entrance();
 		}
 	}
