@@ -20,6 +20,7 @@ public class OwnerManager {
 		LOGGER.log(Level.INFO,"Enter Phone Number:");
 		String phoneNumber = SakancomApp.getScanner().nextLine();
 		Owner owner = new Owner( email, phoneNumber);
+		owner.setName(name);
 		user.setUserId(owner.getId());
 		skankom.addOwner(owner);
 		skankom.addUser(user);
