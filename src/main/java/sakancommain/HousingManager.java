@@ -163,7 +163,7 @@ public class HousingManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return; }
+		if (Boolean.TRUE.equals(!remove)) { return; }
 		Housing housing = housings[housingNumber - 1];
 		Owner owner = skankom.getOwner(housing.getOwnerId());
 		if (owner != null) {
