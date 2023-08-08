@@ -51,13 +51,9 @@ public class ReservationManager {
 		}
 		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Choose Housing \n2) Return Back");
 		int choice = SakancomApp.scanInt();
-		switch (choice) {
-		case 1:
+		if(choice==1) {
 			showAnnoucements(owner, housings);
 			showReservations(owner);
-			break;
-		default:
-			break;
 		}
 	}
 
