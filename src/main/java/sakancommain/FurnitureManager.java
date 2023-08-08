@@ -6,6 +6,7 @@ import owner.*;
 
 public class FurnitureManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private FurnitureManager() {}
 
 	public static void manageFurniture(Tenant tenant) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Add Furniture \n2) Remove Furniture \n3) Show Furniture \n4) Return Back");
