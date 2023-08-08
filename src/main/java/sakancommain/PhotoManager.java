@@ -9,6 +9,7 @@ import owner.*;
 
 public class PhotoManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private PhotoManager() {}
 
 	public static void managePhotos(Announcement announcement) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Add Photo \n2) Remove Photo \n3) Show Photos \n4) Finish");
