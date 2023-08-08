@@ -59,8 +59,9 @@ public class Skankom implements Serializable {
             fileOut.close();
         } 
 			finally {
-				if(out!=null)
+				if(out!=null) {
 				out.close();
+				}
 			}
 		}
 	
@@ -68,10 +69,9 @@ public class Skankom implements Serializable {
 			LOGGER.log(Level.INFO, "error in write to file function!");
         }
 		finally {
-			if(fileOut!=null) 
+			if(fileOut!=null) { 
 			fileOut.close();
-			
-			// Multiple streams were opened. Only the last is closed.
+			}
 		  }
 	}
 	
