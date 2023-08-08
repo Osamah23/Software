@@ -36,7 +36,8 @@ public class ApartmentManager {
 
 	public static List<Apartment> getApartments(Floor floor) {
 		if (floor.getApartments().isEmpty()) {
-			LOGGER.log(Level.INFO,"No apartments added yet to " + floor.toString());
+			String n="No apartments added yet to " + floor.toString();
+			LOGGER.log(Level.INFO,n);
 			return null;
 		}
 		int counter = 1;
@@ -45,7 +46,8 @@ public class ApartmentManager {
 			Apartment apartment = skankom.getApartment(apartmentId);
 			if (apartment != null) {
 				apartments.add(apartment);
-				LOGGER.log(Level.INFO,counter + ") " + apartment.toString());
+				String j=counter + ") " + apartment.toString();
+				LOGGER.log(Level.INFO,j);
 				counter++;
 			}
 		}
