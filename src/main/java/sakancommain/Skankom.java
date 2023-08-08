@@ -89,18 +89,21 @@ public class Skankom implements Serializable {
 			fileIn.close();
 		}
 			 finally {
-					if(in!=null)
+					if(in!=null) {
 					in.close();
+					}
 					}	 
 		}
 		catch (Exception e) {
 			LOGGER.log(Level.INFO, "error in read from file function!");
 		}
 		finally {
-			if(fileIn!=null) 
+			if(fileIn!=null) { 
 			fileIn.close();
-			if(in!=null)
-			in.close();// Multiple streams were opened. Only the last is closed.
+			}
+			if(in!=null) {
+			in.close();
+			}// Multiple streams were opened. Only the last is closed.
 		  }
 		
 
