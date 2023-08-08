@@ -23,7 +23,8 @@ public class OwnerManager {
 		user.setUserId(owner.getId());
 		skankom.addOwner(owner);
 		skankom.addUser(user);
-		LOGGER.log(Level.INFO,owner.toString() + " is created.");
+		String k=owner.toString() + " is created.";
+		LOGGER.log(Level.INFO,k);
 		enterAsOwner(owner);
 	}
 	
