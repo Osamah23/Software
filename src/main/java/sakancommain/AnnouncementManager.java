@@ -110,14 +110,14 @@ public class AnnouncementManager {
 			SakancomApp.entrance();
 		}
 	}
-	private static final String enter="The entered number is not exist.\n1) Try Again 2) Cancel";
-	private static final String annum="Enter Announcement Number:";
+	private static final String ENTER="The entered number is not exist.\n1) Try Again 2) Cancel";
+	private static final String ANNUM="Enter Announcement Number:";
 	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) throws IOException {
-		LOGGER.log(Level.INFO,annum);
+		LOGGER.log(Level.INFO,ANNUM);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
 			
-			LOGGER.log(Level.INFO,enter);
+			LOGGER.log(Level.INFO,ENTER);
 			if (SakancomApp.scanInt() == 1) {
 				chooseAnnouncement(tenant, announcements);
 			}
@@ -184,7 +184,7 @@ public class AnnouncementManager {
 		System.out.println("Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.length) {
-			LOGGER.log(Level.INFO,enter);
+			LOGGER.log(Level.INFO,ENTER);
 			if (SakancomApp.scanInt() == 1) {
 				chooseApartment(tenant, housing, apartments);
 			}
@@ -217,10 +217,10 @@ public class AnnouncementManager {
 	}
 
 	public static void acceptRejectAnnouncement(Announcement[] announcements) throws IOException {
-		LOGGER.log(Level.INFO,annum);
+		LOGGER.log(Level.INFO,ANNUM);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
-			LOGGER.log(Level.INFO,enter);	
+			LOGGER.log(Level.INFO,ENTER);	
 			if (SakancomApp.scanInt() == 1) {
 				acceptRejectAnnouncement(announcements);
 			}
@@ -234,7 +234,7 @@ public class AnnouncementManager {
 	}
 
 	public static void removeAnnouncement(Announcement[] announcements) throws IOException {
-		LOGGER.log(Level.INFO,annum);
+		LOGGER.log(Level.INFO,ANNUM);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
 			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
