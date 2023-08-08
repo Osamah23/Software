@@ -52,7 +52,8 @@ public class FloorManager {
 			LOGGER.log(Level.INFO,m);
 			return;
 		}
-		LOGGER.log(Level.INFO,"Floors in " + housing.toString() + " are: [");
+		String y="Floors in " + housing.toString() + " are: [";
+		LOGGER.log(Level.INFO,y);
 		for (String floorId: housing.getFloors()) {
 			Floor floor = skankom.getFloor(floorId);
 			if (floor != null) {
