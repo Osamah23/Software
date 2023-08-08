@@ -174,7 +174,8 @@ public class ReservationManager {
 			Housing housing = skankom.getHousing(reservation);
 			if (housing != null) {
 				housing.removeReservation(tenant.getId());
-				LOGGER.log(Level.INFO,"Reservation to Housing " + housing.toString() + " is deleted");
+				String y="Reservation to Housing " + housing.toString() + " is deleted";
+				LOGGER.log(Level.INFO,y);
 			} else {
 				tenant.removeReservedHousing(reservation);
 				LOGGER.log(Level.INFO,"Reservation is deleted");
