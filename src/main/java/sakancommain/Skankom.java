@@ -255,9 +255,9 @@ public class Skankom implements Serializable {
 
 	public List<Housing> getHousings(Owner owner) {
 		Collection<Housing> collection = getHousings().values();
-		Housing[] housings = collection.toArray(new Housing[0]);
+		Housing[] housings1 = collection.toArray(new Housing[0]);
 		ArrayList<Housing> houses = new ArrayList<>();
-		for (Housing housing: housings) {
+		for (Housing housing: housings1) {
 			if (housing.getOwnerId().equals(owner.getId())) {
 				houses.add(housing);
 			}
