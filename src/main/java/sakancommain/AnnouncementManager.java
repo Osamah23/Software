@@ -196,18 +196,13 @@ public class AnnouncementManager {
 		LOGGER.log(Level.INFO,"1) Reserve Apartment \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		Apartment apartment = apartments[apartmentNumber - 1];
-		switch (choice) {
-		case 1:
+		if (choice==1) {
 			LOGGER.log(Level.INFO,"Reserving Apartment Confirmation:\n1) Confirm \n2) Cancel");
 			choice = SakancomApp.scanInt();
-			if (choice == 1) {
 				housing.addReservation(tenant.getId(), apartment.getId());
 				tenant.addReservedHousing(housing);
 				String j="Apartment with: " + apartment.toString() + " reservation request is sent.";
 				LOGGER.log(Level.INFO,j);
-			}
-			break;
-			default:
 		}
 	}
 	
