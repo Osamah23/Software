@@ -112,10 +112,12 @@ public class AnnouncementManager {
 	}
 	
 	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) throws IOException {
-		LOGGER.log(Level.INFO,"Enter Announcement Number:");
+		String c="Enter Announcement Number:";
+		LOGGER.log(Level.INFO,c);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
-			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again 2) Cancel");
+			String n="The entered number is not exist.\n1) Try Again 2) Cancel";
+			LOGGER.log(Level.INFO,n);
 			if (SakancomApp.scanInt() == 1) {
 				chooseAnnouncement(tenant, announcements);
 			}
