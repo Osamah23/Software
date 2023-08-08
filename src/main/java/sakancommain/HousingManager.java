@@ -91,6 +91,7 @@ public class HousingManager {
 		case 2:
 			removeHousing(housings);
 			AdminManager.enterAsAdmin(admin);
+			break;
 		case 3:
 			AdminManager.enterAsAdmin(admin);
 			break;
