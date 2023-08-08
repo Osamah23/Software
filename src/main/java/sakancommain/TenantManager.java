@@ -58,7 +58,8 @@ public class TenantManager {
 
 	public static void manageBooking(Tenant tenant) throws IOException {
 		if (tenant.getBookedHousing() == null) {
-			LOGGER.log(Level.INFO,"You haven't booked any apartment yet.");
+			String l="You haven't booked any apartment yet.";
+			LOGGER.log(Level.INFO,l);
 			return;
 		}
 		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Show Booking Details \n2) Remove Booking \n3) Return Back \n4) Exit");
