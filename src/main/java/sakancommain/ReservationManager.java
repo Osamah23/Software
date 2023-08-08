@@ -139,7 +139,8 @@ public class ReservationManager {
 				if (apartmentId == null) { continue; }
 				Apartment apartment = skankom.getApartment(apartmentId);
 				if (apartment != null) {
-					LOGGER.log(Level.INFO,counter + ") Reservation Housing " + housing.toString() + ", Apartment " + apartment.toString());
+					String j=counter + ") Reservation Housing " + housing.toString() + ", Apartment " + apartment.toString();
+					LOGGER.log(Level.INFO,j);
 					counter++;
 				}
 			}
