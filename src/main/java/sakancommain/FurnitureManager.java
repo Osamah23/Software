@@ -2,14 +2,18 @@ package sakancommain;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import owner.*;
 
 public class FurnitureManager {
 	private static Skankom skankom = Skankom.getInstance();
 	private FurnitureManager() {}
+	private static final Logger LOGGER = Logger.getLogger(FurnitureManager.class.getName());
 
 	public static void manageFurniture(Tenant tenant) throws IOException {
-		System.out.println("Choose one of the following options:\n1) Add Furniture \n2) Remove Furniture \n3) Show Furniture \n4) Return Back");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Add Furniture \n2) Remove Furniture \n3) Show Furniture \n4) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -19,7 +23,7 @@ public class FurnitureManager {
 		case 2:
 			String furnitureInfo = deleteFurniture(tenant);
 			if (furnitureInfo != null) {
-				System.out.println("Furniture with Info: " + furnitureInfo + " is deleted from " + tenant.toString());
+				LOGGER.log(Level.INFO,"Furniture with Info: " + furnitureInfo + " is deleted from " + tenant.toString());
 			}
 			manageFurniture(tenant);
 			break;
@@ -30,7 +34,7 @@ public class FurnitureManager {
 		case 4:
 			break;
 		default:
-			System.out.println("Wrong choice.\n1) Try Again 2) Finish");
+			LOGGER.log(Level.INFO,"Wrong choice.\n1) Try Again 2) Finish");
 			if (SakancomApp.scanInt() == 1) {
 				manageFurniture(tenant);
 			}
@@ -38,23 +42,23 @@ public class FurnitureManager {
 	}
 
 	public static void addFurniture(Tenant tenant) throws IOException {
-		System.out.println("Enter name:");
+		LOGGER.log(Level.INFO,"Enter name:");
 		String name = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter price:");
+		LOGGER.log(Level.INFO,"Enter price:");
 		double price = SakancomApp.scanDouble();
-		System.out.println("Adding Apartment Confirmation:\n1) Confirm \n2) Cancel");
+		LOGGER.log(Level.INFO,"Adding Apartment Confirmation:\n1) Confirm \n2) Cancel");
 		int choice = SakancomApp.scanInt();
 		if (choice == 1) {
 			Furniture furniture = new Furniture(name, price, tenant.getId());
 			tenant.addFurnitureForSale(furniture);
 			skankom.addFurniture(furniture);
-			System.out.println("Furniture with Info: " + furniture.toString() + " is added to " + tenant.toString());
+			LOGGER.log(Level.INFO,"Furniture with Info: " + furniture.toString() + " is added to " + tenant.toString());
 		}
 	}
 
 	public static ArrayList<Furniture> showFurniture(Tenant tenant) {
 		if (tenant.getListedFurniture().isEmpty()) {
-			System.out.println("No furnitures added for sale yet");
+			LOGGER.log(Level.INFO,"No furnitures added for sale yet");
 			return null;
 		}
 		int counter = 1;
@@ -63,7 +67,7 @@ public class FurnitureManager {
 			Furniture furniture = skankom.getFurniture(furnitureId);
 			if (furniture != null) {
 				furnitures.add(furniture);
-				System.out.println(counter + ") " + furniture.toString());
+				LOGGER.log(Level.INFO,counter + ") " + furniture.toString());
 				counter++;
 			}
 		}
@@ -77,16 +81,16 @@ public class FurnitureManager {
 	}
 
 	public static String removeFurniture(ArrayList<Furniture> furnitures, Tenant tenant) throws IOException {
-		System.out.println("Enter Furniture Number:");
+		LOGGER.log(Level.INFO,"Enter Furniture Number:");
 		int furnitureNumber = SakancomApp.scanInt();
 		if (furnitureNumber > furnitures.size()) {
-			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again \n2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
 				return removeFurniture(furnitures, tenant);
 			}
 			return null;
 		}
-		System.out.println("1) Remove \n2) Cancel");
+		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
 		if (!remove) { return null; }
 		Furniture furniture = furnitures.get(furnitureNumber - 1);
