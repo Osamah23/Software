@@ -79,7 +79,8 @@ public class ReservationManager {
 			Tenant tenant = skankom.getTenant(key);
 			Apartment apartment = skankom.getApartment(reservationId);
 			if (tenant != null && apartment != null) {
-				LOGGER.log(Level.INFO,counter + ") Owner: " + owner.toString() + ", Apartment: " + apartment.toString());	
+				String s=counter + ") Owner: " + owner.toString() + ", Apartment: " + apartment.toString();
+				LOGGER.log(Level.INFO,s);	
 				counter++;
 			}
 		}
