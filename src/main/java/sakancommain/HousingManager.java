@@ -24,7 +24,8 @@ public class HousingManager {
 		if (choice == 1) {
 			owner.addHousing(housing);
 			skankom.addHousing(housing);
-			LOGGER.log(Level.INFO,"Housing with: " + housing.toString() + " is added.");
+			String c="Housing with: " + housing.toString() + " is added.";
+			LOGGER.log(Level.INFO,c);
 			return housing;
 		}
 		return null;
