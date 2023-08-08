@@ -48,10 +48,12 @@ public class ServiceManager {
 
 	public static void showServices(Announcement announcement) {
 		if (announcement.getServices().isEmpty()) {
-			LOGGER.log(Level.INFO,"No srevices added yet to " + announcement.toString());
+			String h="No srevices added yet to " + announcement.toString();
+			LOGGER.log(Level.INFO,h);
 			return;
 		}
-		LOGGER.log(Level.INFO,"Services in " + announcement.toString() + " are: [");
+		String l="Services in " + announcement.toString() + " are: [";
+		LOGGER.log(Level.INFO,l);
 		for (String service: announcement.getServices()) {
 			LOGGER.log(Level.INFO,service);
 		}
