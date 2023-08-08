@@ -250,7 +250,8 @@ public class AnnouncementManager {
 		if (Boolean.TRUE.equals(!remove)) { return; }
 		Announcement announcement = announcements[announcementNumber - 1];
 		skankom.removeAnnouncement(announcement);
-		LOGGER.log(Level.INFO,"Announcement with Title: " + announcement.getTitle() + " is deleted");
+		String v="Announcement with Title: " + announcement.getTitle() + " is deleted";
+		LOGGER.log(Level.INFO,v);
 	}
 
 	public static void addAnnouncement(Owner owner) throws IOException {
