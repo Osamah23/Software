@@ -264,7 +264,8 @@ public class AnnouncementManager {
 		for (String housingId: housingIds) {
 			Housing housing = skankom.getHousing(housingId);
 			if (housing != null) {
-				LOGGER.log(Level.INFO,counter + ") " + housing.toString());
+				String a=counter + ") " + housing.toString();
+				LOGGER.log(Level.INFO,a);
 			}
 			counter++;
 		}
