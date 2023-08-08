@@ -126,7 +126,8 @@ public class SakancomApp {
 			if (admin != null) {
 				AdminManager.enterAsAdmin(admin);
 			} else {
-				LOGGER.log(Level.INFO,"Cannot find an admin with userName: " + user.getUserName());
+				String o="Cannot find an admin with userName: " + user.getUserName();
+				LOGGER.log(Level.INFO,o);
 			}
 			break;
 		case OWNER:
@@ -134,7 +135,8 @@ public class SakancomApp {
 			if (owner != null) {
 				OwnerManager.enterAsOwner(owner);
 			} else {
-				LOGGER.log(Level.INFO,"Cannot find an owner with userName: " + user.getUserName());
+				String e="Cannot find an owner with userName: " + user.getUserName();
+				LOGGER.log(Level.INFO,e);
 			}
 			break;
 		case TENANT:
