@@ -1,15 +1,17 @@
 package sakancommain;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.*;
 import owner.*;
 
 public class SakancomApp {
 	private static Skankom skankom = Skankom.getInstance();
-
+	private static final Logger LOGGER = Logger.getLogger(SakancomApp.class.getName());
 	public static void main(String[] args) throws IOException {
 		String sentence = "WELCOME TO Sakan Application";
-		System.out.println(sentence);
+		LOGGER.log(Level.INFO,sentence);
 		entrance();
 	}
 
@@ -39,7 +41,7 @@ public class SakancomApp {
 	}
 
 	public static void entrance() throws IOException {
-		System.out.println("1) Sign In\n2) Sign Up\n3) Quit");
+		LOGGER.log(Level.INFO,"1) Sign In\n2) Sign Up\n3) Quit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1: 
@@ -56,30 +58,30 @@ public class SakancomApp {
 	}
 
 	public static void signIn() throws IOException {
-		System.out.println("Enter userName:");
+		LOGGER.log(Level.INFO,"Enter userName:");
 		String userName = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter password:");
+		LOGGER.log(Level.INFO,"Enter password:");
 		String password = SakancomApp.getScanner().nextLine();
 		User user = skankom.getUser(userName);
 		if (user == null) {
-			System.out.println("There is no matched user name in the system."); 
+			LOGGER.log(Level.INFO,"There is no matched user name in the system."); 
 			entrance();
 		} else if (user.getPassword().equals(password)) {
 			classifyUser(user);
 		} else {
-			System.out.println("Wrong password"); 
+			LOGGER.log(Level.INFO,"Wrong password"); 
 			entrance();
 		}
 	}
 
 	public static void signUp() throws IOException {
-		System.out.println("Enter userName:");
+		LOGGER.log(Level.INFO,"Enter userName:");
 		String userName = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter password:");
+		LOGGER.log(Level.INFO,"Enter password:");
 		String password = SakancomApp.getScanner().nextLine();
 		UserType userType = null;
 		while (userType == null) {
-			System.out.println("Choose userType:\n1) Admin 2) Tenant 3) Owner");
+			LOGGER.log(Level.INFO,"Choose userType:\n1) Admin 2) Tenant 3) Owner");
 			int userTypeNumber = SakancomApp.scanInt();
 			userType = getUserType(userTypeNumber); 
 		}
@@ -112,7 +114,7 @@ public class SakancomApp {
 			TenantManager.createTenant(user);
 			break;
 		default:
-			System.out.println("User type" + user.getUserType() + " does not exist.");
+			LOGGER.log(Level.INFO,"User type" + user.getUserType() + " does not exist.");
 			entrance();
 		}
 	}
@@ -124,7 +126,7 @@ public class SakancomApp {
 			if (admin != null) {
 				AdminManager.enterAsAdmin(admin);
 			} else {
-				System.out.println("Cannot find an admin with userName: " + user.getUserName());
+				LOGGER.log(Level.INFO,"Cannot find an admin with userName: " + user.getUserName());
 			}
 			break;
 		case OWNER:
@@ -132,7 +134,7 @@ public class SakancomApp {
 			if (owner != null) {
 				OwnerManager.enterAsOwner(owner);
 			} else {
-				System.out.println("Cannot find an owner with userName: " + user.getUserName());
+				LOGGER.log(Level.INFO,"Cannot find an owner with userName: " + user.getUserName());
 			}
 			break;
 		case TENANT:
@@ -140,11 +142,11 @@ public class SakancomApp {
 			if (tenant != null) {
 				TenantManager.enterAsTenant(tenant);
 			} else {
-				System.out.println("Cannot find a tenant with userName: " + user.getUserName());
+				LOGGER.log(Level.INFO,"Cannot find a tenant with userName: " + user.getUserName());
 			}
 			break;
 		default:
-			System.out.println("User type" + user.getUserType() + " does not exist.");
+			LOGGER.log(Level.INFO,"User type" + user.getUserType() + " does not exist.");
 			entrance();
 		}
 	}
