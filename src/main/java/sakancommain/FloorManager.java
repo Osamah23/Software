@@ -102,7 +102,8 @@ public class FloorManager {
 			Apartment apartment = ApartmentManager.createApartment();
 			if (apartment != null) {
 				floor.addApartment(apartment);
-				LOGGER.log(Level.INFO,"Apartment with Info: " + apartment.toString() + " is added to " + floor.toString());
+				String r="Apartment with Info: " + apartment.toString() + " is added to " + floor.toString();
+				LOGGER.log(Level.INFO,r);
 			}
 			return createFloor(housing, floor);
 		case 2:
