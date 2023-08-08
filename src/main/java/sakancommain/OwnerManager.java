@@ -1,30 +1,34 @@
 package sakancommain;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import owner.*;
 
 
 public class OwnerManager {
 	private static Skankom skankom = Skankom.getInstance();
 	private OwnerManager() {}
+	private static final Logger LOGGER = Logger.getLogger(OwnerManager.class.getName());
 
 	public static void createOwner(User user) throws IOException {
-		System.out.println("Enter Owner Name:");
+		LOGGER.log(Level.INFO,"Enter Owner Name:");
 		String name = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter Email:");
+		LOGGER.log(Level.INFO,"Enter Email:");
 		String email = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter Phone Number:");
+		LOGGER.log(Level.INFO,"Enter Phone Number:");
 		String phoneNumber = SakancomApp.getScanner().nextLine();
 		Owner owner = new Owner( email, phoneNumber);
 		user.setUserId(owner.getId());
 		skankom.addOwner(owner);
 		skankom.addUser(user);
-		System.out.println(owner.toString() + " is created.");
+		LOGGER.log(Level.INFO,owner.toString() + " is created.");
 		enterAsOwner(owner);
 	}
 	
 	public static void enterAsOwner(Owner owner) throws IOException {
-		System.out.println("Choose one of the following options:\n1) Show Announecemnts \n2) Show Reservations \n3) Add Announcement \n4) Show Housings \n5) Add Housing \n6) Exit");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Show Announecemnts \n2) Show Reservations \n3) Add Announcement \n4) Show Housings \n5) Add Housing \n6) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
