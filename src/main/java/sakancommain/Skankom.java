@@ -253,7 +253,7 @@ public class Skankom implements Serializable {
 		return announs;
 	}
 
-	public ArrayList<Housing> getHousings(Owner owner) {
+	public List<Housing> getHousings(Owner owner) {
 		Collection<Housing> collection = getHousings().values();
 		Housing[] housings = collection.toArray(new Housing[0]);
 		ArrayList<Housing> houses = new ArrayList<>();

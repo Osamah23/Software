@@ -38,7 +38,7 @@ public class ReservationManager {
 	}
 
 	public static void showReservations(Owner owner) throws IOException {
-		ArrayList<Housing> housings = skankom.getHousings(owner);
+		List<Housing> housings = skankom.getHousings(owner);
 		if (housings.isEmpty()) {
 			LOGGER.log(Level.INFO,"No housings added to show.");
 			return;

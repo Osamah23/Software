@@ -101,7 +101,7 @@ public class HousingManager {
 	}
 	
 	public static void showHousings(Owner owner) throws IOException {
-		ArrayList<Housing> arrayList = skankom.getHousings(owner);
+		List<Housing> arrayList = skankom.getHousings(owner);
 		Housing[] housings = arrayList.toArray(new Housing[0]);
 		if (housings.length == 0) {
 			LOGGER.log(Level.INFO,"No hosuings to show");
