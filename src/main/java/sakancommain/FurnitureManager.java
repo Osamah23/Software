@@ -95,7 +95,7 @@ public class FurnitureManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return null; }
+		if (Boolean.TRUE.equals(!remove)) { return null; }
 		Furniture furniture = tenants.get(furnitureNumber - 1);
 		String furnitureInfo = furniture.toString();
 		tenant.removeListedFurniture(furniture);
