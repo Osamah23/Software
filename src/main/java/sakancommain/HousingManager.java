@@ -140,7 +140,8 @@ public class HousingManager {
 			Housing housing = housings[housingNumber - 1];
 			housing = editHousing(housing);
 			if (housing != null) {
-				LOGGER.log(Level.INFO,"Housing with: " + housing.toString() + " is edited." );
+				String h="Housing with: " + housing.toString() + " is edited.";
+				LOGGER.log(Level.INFO,h );
 			}
 		} else {
 			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again 2) Cancel");
