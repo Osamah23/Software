@@ -2,6 +2,7 @@ package sakancommain;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import owner.*;
@@ -15,37 +16,37 @@ public class ReservationManager {
 		Collection<Housing> collection = skankom.getHousings().values();
 		Housing[] housings = collection.toArray(new Housing[0]);
 		if (housings.length == 0) {
-			System.out.println("No housings added to show.");
+			LOGGER.log(Level.INFO,"No housings added to show.");
 			return;
 		}
 		for (Housing housing: housings) {
-			System.out.println(housing.toString() + "\nReservations:\n[");
+			LOGGER.log(Level.INFO,housing.toString() + "\nReservations:\n[");
 			List<String> tenants = null;
 				tenants = housing.getTenants();
 			
 			for (String tenantId: tenants) {
 				Tenant tenant = skankom.getTenant(tenantId);
 				if (tenant != null) {
-					System.out.println(tenant.toString());
+					LOGGER.log(Level.INFO,tenant.toString());
 				}
 			}
-			System.out.println("]");
-			System.out.println("*****");
+			LOGGER.log(Level.INFO,"]");
+			LOGGER.log(Level.INFO,"*****");
 		}
 	}
 
 	public static void showReservations(Owner owner) throws IOException {
 		ArrayList<Housing> housings = skankom.getHousings(owner);
 		if (housings.isEmpty()) {
-			System.out.println("No housings added to show.");
+			LOGGER.log(Level.INFO,"No housings added to show.");
 			return;
 		}
 		int counter = 1;
 		for (Housing housing: housings) {
-			System.out.println(counter + ") " + housing.toString());
+			LOGGER.log(Level.INFO,counter + ") " + housing.toString());
 			counter++;
 		}
-		System.out.println("Choose one of the following options:\n1) Choose Housing \n2) Return Back");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Choose Housing \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -58,10 +59,10 @@ public class ReservationManager {
 	}
 
 	public static void showAnnoucements(Owner owner, ArrayList<Housing> housings) throws IOException {
-		System.out.println("Enter Housing Number:");
+		LOGGER.log(Level.INFO,"Enter Housing Number:");
 		int housingNumber = SakancomApp.scanInt();
 		if (housingNumber > housings.size()) {
-			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again \n2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
 				showAnnoucements(owner, housings);
 			}
@@ -71,7 +72,7 @@ public class ReservationManager {
 		Housing housing = housings.get(housingNumber - 1);
 		Map<String, String> reservations = housing.getReservations();
 		if (reservations.isEmpty()) {
-			System.out.println("No reservations to show.");
+			LOGGER.log(Level.INFO,"No reservations to show.");
 			return;
 		}
 		for (String key : reservations.keySet()) {
@@ -79,7 +80,7 @@ public class ReservationManager {
 			Tenant tenant = skankom.getTenant(key);
 			Apartment apartment = skankom.getApartment(reservationId);
 			if (tenant != null && apartment != null) {
-				System.out.println(counter + ") Owner: " + owner.toString() + ", Apartment: " + apartment.toString());	
+				LOGGER.log(Level.INFO,counter + ") Owner: " + owner.toString() + ", Apartment: " + apartment.toString());	
 				counter++;
 			}
 		}
@@ -87,7 +88,7 @@ public class ReservationManager {
 	}
 
 	public static void showReservationDetails(Owner owner, ArrayList<Housing> housings, Housing housing, Map<String, String> reservations) throws IOException {
-		System.out.println("Choose one of the following options:\n1) Accept/Reject Reservation \n2) Return Back \n3) Finish");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Accept/Reject Reservation \n2) Return Back \n3) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -101,16 +102,16 @@ public class ReservationManager {
 	}
 
 	public static void acceptRejectReservation(Housing housing, Map<String, String> reservations) throws IOException {
-		System.out.println("Enter Reservation Number:");
+		LOGGER.log(Level.INFO,"Enter Reservation Number:");
 		int reservationNumber = SakancomApp.scanInt();
 		if (reservationNumber > reservations.size()) {
-			System.out.println("The entered number is not exist.\n1) Try Again 2) Cancel");	
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again 2) Cancel");	
 			if (SakancomApp.scanInt() == 1) {
 				acceptRejectReservation(housing, reservations);
 			}
 			return;
 		}
-		System.out.println("1) Accept \n2) Reject");
+		LOGGER.log(Level.INFO,"1) Accept \n2) Reject");
 		Boolean accept = SakancomApp.scanInt() == 1;
 		String tenantId = reservations.keySet().toArray(new String[0])[reservationNumber - 1];
 		String apartmentId = reservations.get(tenantId);
@@ -118,14 +119,14 @@ public class ReservationManager {
 			housing.addTenant(tenantId, apartmentId);
 		} else {
 			housing.removeReservation(tenantId);
-			System.out.println("Reservation is deleted.");
+			LOGGER.log(Level.INFO,"Reservation is deleted.");
 		}
 	}
 
 	public static void showReservations(Tenant tenant) throws IOException {
 		List<String> reservations = tenant.getReservedHousing();
 		if (reservations.isEmpty()) {
-			System.out.println("No reservations added to show.");
+			LOGGER.log(Level.INFO,"No reservations added to show.");
 			return;
 		}
 		int counter = 1;
@@ -136,12 +137,12 @@ public class ReservationManager {
 				if (apartmentId == null) { continue; }
 				Apartment apartment = skankom.getApartment(apartmentId);
 				if (apartment != null) {
-					System.out.println(counter + ") Reservation Housing " + housing.toString() + ", Apartment " + apartment.toString());
+					LOGGER.log(Level.INFO,counter + ") Reservation Housing " + housing.toString() + ", Apartment " + apartment.toString());
 					counter++;
 				}
 			}
 		}
-		System.out.println("Choose one of the following options:\n1) Remove Reservation \n2) Return Back");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Remove Reservation \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -154,26 +155,26 @@ public class ReservationManager {
 	}
 
 	public static void removeReservation(Tenant tenant, List<String> reservations) throws IOException {
-		System.out.println("Enter Reservation Number:");
+		LOGGER.log(Level.INFO,"Enter Reservation Number:");
 		int reservationNumber = SakancomApp.scanInt();
 		if (reservationNumber > reservations.size()) {
-			System.out.println("The entered number is not exist.\n1) Try Again 2) Cancel");	
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again 2) Cancel");	
 			if (SakancomApp.scanInt() == 1) {
 				removeReservation(tenant, reservations);
 			}
 			return;
 		}
-		System.out.println("Deleting Confirmation: \n1) Confirm \n2) Cancel");
+		LOGGER.log(Level.INFO,"Deleting Confirmation: \n1) Confirm \n2) Cancel");
 		int choice = SakancomApp.scanInt();
 		if (choice == 1) {
 			String reservation = reservations.get(reservationNumber - 1);
 			Housing housing = skankom.getHousing(reservation);
 			if (housing != null) {
 				housing.removeReservation(tenant.getId());
-				System.out.println("Reservation to Housing " + housing.toString() + " is deleted");
+				LOGGER.log(Level.INFO,"Reservation to Housing " + housing.toString() + " is deleted");
 			} else {
 				tenant.removeReservedHousing(reservation);
-				System.out.println("Reservation is deleted");
+				LOGGER.log(Level.INFO,"Reservation is deleted");
 			}
 		}
 	}
