@@ -58,7 +58,7 @@ public class FurnitureManager {
 		}
 	}
 
-	public static ArrayList<Furniture> showFurniture(Tenant tenant) {
+	public static List<Furniture> showFurniture(Tenant tenant) {
 		if (tenant.getListedFurniture().isEmpty()) {
 			LOGGER.log(Level.INFO,"No furnitures added for sale yet");
 			return null;
@@ -77,25 +77,25 @@ public class FurnitureManager {
 	}
 
 	public static String deleteFurniture(Tenant tenant) throws IOException {
-		ArrayList<Furniture> tenants = showFurniture(tenant);
+		List<Furniture> tenants = showFurniture(tenant);
 		if (tenants == null) { return null; }
 		return removeFurniture(tenants, tenant);
 	}
 
-	public static String removeFurniture(ArrayList<Furniture> furnitures, Tenant tenant) throws IOException {
+	public static String removeFurniture(List<Furniture> tenants, Tenant tenant) throws IOException {
 		LOGGER.log(Level.INFO,"Enter Furniture Number:");
 		int furnitureNumber = SakancomApp.scanInt();
-		if (furnitureNumber > furnitures.size()) {
+		if (furnitureNumber > tenants.size()) {
 			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again \n2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
-				return removeFurniture(furnitures, tenant);
+				return removeFurniture(tenants, tenant);
 			}
 			return null;
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
 		if (!remove) { return null; }
-		Furniture furniture = furnitures.get(furnitureNumber - 1);
+		Furniture furniture = tenants.get(furnitureNumber - 1);
 		String furnitureInfo = furniture.toString();
 		tenant.removeListedFurniture(furniture);
 		skankom.removeFurniture(furniture);
