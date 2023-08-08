@@ -6,6 +6,7 @@ import owner.*;
 
 public class OwnerManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private OwnerManager() {}
 
 	public static void createOwner(User user) throws IOException {
 		System.out.println("Enter Owner Name:");
