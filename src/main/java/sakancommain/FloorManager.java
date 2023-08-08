@@ -85,7 +85,7 @@ public class FloorManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return null; }
+		if (Boolean.TRUE.equals(!remove)) { return null; }
 		String floorId = housing.getFloors().get(floorNumber - 1);
 		Floor floor = skankom.getFloor(floorId);
 		String floorInfo = floor.toString();
