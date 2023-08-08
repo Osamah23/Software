@@ -6,6 +6,7 @@ import owner.*;
 
 public class ServiceManager {
 	private static Skankom skankom = Skankom.getInstance();
+	private ServiceManager() {}
 	
 	public static void manageServices(Announcement announcement) throws IOException {
 		System.out.println("Choose one of the following options:\n1) Add Service \n2) Remove Service \n3) Show Services \n4) Finish");
