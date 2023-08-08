@@ -34,7 +34,7 @@ public class SakancomApp {
 
 		while (!scanner.hasNextDouble()) {
 			scanner.next();
-			System.out.print("Invalid double input. Please enter a double: ");
+			LOGGER.log(Level.INFO,"Invalid double input. Please enter a double: ");
 		}
 		double number = scanner.nextDouble();
 		return number;
