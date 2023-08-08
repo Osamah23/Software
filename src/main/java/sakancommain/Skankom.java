@@ -265,7 +265,7 @@ public class Skankom implements Serializable {
 		return houses;
 	}
 
-	public ArrayList<Announcement> getAcceptedAnnouncements() {
+	public List<Announcement> getAcceptedAnnouncements() {
 		ArrayList<Announcement> announcements = new ArrayList<>();
 		for (String key: announcementsStatus.keySet()) {
 			AnnouncementStatus status = announcementsStatus.get(key);
