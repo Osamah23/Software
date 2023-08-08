@@ -28,7 +28,8 @@ public class ReservationManager {
 			for (String tenantId: tenants) {
 				Tenant tenant = skankom.getTenant(tenantId);
 				if (tenant != null) {
-					LOGGER.log(Level.INFO,tenant.toString());
+					String l=tenant.toString();
+					LOGGER.log(Level.INFO,l);
 				}
 			}
 			LOGGER.log(Level.INFO,"]");
