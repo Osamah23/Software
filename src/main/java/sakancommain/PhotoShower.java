@@ -2,11 +2,7 @@ package sakancommain;
 
 import java.awt.*;
 import java.awt.image.*;
-import java.io.*;
-import java.util.*;
 import java.util.List;
-
-import javax.imageio.*;
 import javax.swing.*;
 
 public class PhotoShower extends JFrame {
