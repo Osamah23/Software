@@ -66,7 +66,8 @@ public class FloorManager {
 
 	public static String deleteFloor(Housing housing) throws IOException {
 		if (housing.getFloors().isEmpty()) {
-			LOGGER.log(Level.INFO,"No floors added yet to " + housing.toString());
+			String l="No floors added yet to " + housing.toString();
+			LOGGER.log(Level.INFO,l);
 			return null;
 		}
 		return removeFloor(housing);
