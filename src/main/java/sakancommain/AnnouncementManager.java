@@ -110,9 +110,8 @@ public class AnnouncementManager {
 			SakancomApp.entrance();
 		}
 	}
-	
+	private static final String c="Enter Announcement Number:";
 	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) throws IOException {
-		String c="Enter Announcement Number:";
 		LOGGER.log(Level.INFO,c);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
@@ -217,7 +216,7 @@ public class AnnouncementManager {
 	}
 
 	public static void acceptRejectAnnouncement(Announcement[] announcements) throws IOException {
-		System.out.println("Enter Announcement Number:");
+		LOGGER.log(Level.INFO,c);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
 			System.out.println("The entered number is not exist.\n1) Try Again 2) Cancel");	
@@ -234,7 +233,7 @@ public class AnnouncementManager {
 	}
 
 	public static void removeAnnouncement(Announcement[] announcements) throws IOException {
-		System.out.println("Enter Announcement Number:");
+		LOGGER.log(Level.INFO,c);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
 			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
