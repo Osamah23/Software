@@ -81,12 +81,14 @@ public class ServiceManager {
 	
 	public static String deleteService(Announcement announcement) throws IOException {
 		if (announcement.getServices().isEmpty()) {
-			LOGGER.log(Level.INFO,"No services added yet to " + announcement.toString());
+			String b="No services added yet to " + announcement.toString();
+			LOGGER.log(Level.INFO,b);
 			return null;
 		}
 		int counter = 1;
 		for (String service: announcement.getServices()) {
-			LOGGER.log(Level.INFO,counter + ") " + service);
+			String u=counter + ") " + service;
+			LOGGER.log(Level.INFO,u);
 			counter++;
 		}
 		return removeService(announcement.getServices(), announcement);
