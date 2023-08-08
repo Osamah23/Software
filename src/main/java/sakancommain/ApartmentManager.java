@@ -11,7 +11,7 @@ public class ApartmentManager {
 	private ApartmentManager () {}
 	private static Skankom skankom = Skankom.getInstance();
 	 private static final Logger LOGGER = Logger.getLogger(ApartmentManager.class.getName());
-	public static Apartment createApartment(Floor floor) throws IOException {
+	public static Apartment createApartment() throws IOException {
 		LOGGER.log(Level.INFO,"Enter Number of Bedrooms:");
 		int numberOfBedrooms = SakancomApp.scanInt();
 		LOGGER.log(Level.INFO,"Enter Number of Bathrooms:");
