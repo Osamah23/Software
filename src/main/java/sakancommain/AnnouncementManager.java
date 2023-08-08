@@ -231,7 +231,7 @@ public class AnnouncementManager {
 		Boolean accept = SakancomApp.scanInt() == 1;
 		Announcement announcement = announcements[announcementNumber - 1];
 		skankom.addAnnouncementStatus(announcement, accept ? AnnouncementStatus.ACCEPTED : AnnouncementStatus.REJECTED);
-		String k="Announcement with Title: " + announcement.getTitle() + " is " + (accept ? "accepted" : "rejected");
+		String k="Announcement with Title: " + announcement.getTitle() + " is " + (Boolean.TRUE.equals(accept) ? "accepted" : "rejected");
 		LOGGER.log(Level.INFO,k);
 	}
 
