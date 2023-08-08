@@ -231,7 +231,8 @@ public class AnnouncementManager {
 		Boolean accept = SakancomApp.scanInt() == 1;
 		Announcement announcement = announcements[announcementNumber - 1];
 		skankom.addAnnouncementStatus(announcement, accept ? AnnouncementStatus.ACCEPTED : AnnouncementStatus.REJECTED);
-		LOGGER.log(Level.INFO,"Announcement with Title: " + announcement.getTitle() + " is " + (accept ? "accepted" : "rejected"));
+		String k="Announcement with Title: " + announcement.getTitle() + " is " + (accept ? "accepted" : "rejected");
+		LOGGER.log(Level.INFO,k);
 	}
 
 	public static void removeAnnouncement(Announcement[] announcements) throws IOException {
