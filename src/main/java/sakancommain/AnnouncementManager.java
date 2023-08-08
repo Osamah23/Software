@@ -146,26 +146,28 @@ public class AnnouncementManager {
 			break;
 		case 4:
 			announcement.viewPhotos();
+		default:
 		}
 	}
 	
 	public static void showHousingApartments(Tenant tenant, Announcement[] announcements, Housing housing) throws IOException {
 		Apartment[] apartments = housing.getApartments().toArray(new Apartment[0]);
 		if (apartments.length == 0) {
-			System.out.println("No apartments to show");
+			LOGGER.log(Level.INFO,"No apartments to show");
 			chooseAnnouncement(tenant, announcements);
 			return;
 		}
 		int counter = 1;
 		for(Apartment apartment: apartments) {
-			System.out.println(counter + ") " + apartment.toString());
+			String b=counter + ") " + apartment.toString();
+			LOGGER.log(Level.INFO,b);
 			counter++;
 		}
 		showHousingApartmentsDetails(tenant, announcements, housing, apartments);
 	}
 	
 	public static void showHousingApartmentsDetails(Tenant tenant, Announcement[] announcements, Housing housing, Apartment[] apartments) throws IOException {
-		System.out.println("Choose one of the following options:\n1) Choose Apartment \n2) Return Back \n3) Exit");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Choose Apartment \n2) Return Back \n3) Exit");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -181,7 +183,7 @@ public class AnnouncementManager {
 	}
 	
 	public static void chooseApartment(Tenant tenant, Housing housing, Apartment[] apartments) throws IOException {
-		System.out.println("Enter Apartment Number:");
+		LOGGER.log(Level.INFO,"Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.length) {
 			LOGGER.log(Level.INFO,ENTER);
@@ -190,18 +192,20 @@ public class AnnouncementManager {
 			}
 			return;
 		}
-		System.out.println("1) Reserve Apartment \n2) Return Back");
+		LOGGER.log(Level.INFO,"1) Reserve Apartment \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		Apartment apartment = apartments[apartmentNumber - 1];
 		switch (choice) {
 		case 1:
-			System.out.println("Reserving Apartment Confirmation:\n1) Confirm \n2) Cancel");
+			LOGGER.log(Level.INFO,"Reserving Apartment Confirmation:\n1) Confirm \n2) Cancel");
 			choice = SakancomApp.scanInt();
 			if (choice == 1) {
 				housing.addReservation(tenant.getId(), apartment.getId());
 				tenant.addReservedHousing(housing);
-				System.out.println("Apartment with: " + apartment.toString() + " reservation request is sent.");
+				String j="Apartment with: " + apartment.toString() + " reservation request is sent.";
+				LOGGER.log(Level.INFO,j);
 			}
+			default:
 		}
 	}
 	
