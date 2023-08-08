@@ -20,13 +20,15 @@ public class ServiceManager {
 			LOGGER.log(Level.INFO,"Enter Servcie:");
 			String service = SakancomApp.getScanner().nextLine();
 			announcement.addService(service);
-			LOGGER.log(Level.INFO,"\"" + service + "\" service is added to " + announcement.toString());
+			String j="\"" + service + "\" service is added to " + announcement.toString();
+			LOGGER.log(Level.INFO,j);
 			manageServices(announcement);
 			break;
 		case 2:
 			String serviceInfo = deleteService(announcement);
 			if (serviceInfo != null) {
-				LOGGER.log(Level.INFO,"\"" + serviceInfo + "\" service is deleted from " + announcement.toString());
+				String i="\"" + serviceInfo + "\" service is deleted from " + announcement.toString();
+				LOGGER.log(Level.INFO,i);
 			}
 			manageServices(announcement);
 			break;
