@@ -232,67 +232,67 @@ public class AnnouncementManager {
 			}
 			return;
 		}
-		System.out.println("1) Accept \n2) Reject");
+		LOGGER.log(Level.INFO,"1) Accept \n2) Reject");
 		Boolean accept = SakancomApp.scanInt() == 1;
 		Announcement announcement = announcements[announcementNumber - 1];
 		skankom.addAnnouncementStatus(announcement, accept ? AnnouncementStatus.ACCEPTED : AnnouncementStatus.REJECTED);
-		System.out.println("Announcement with Title: " + announcement.getTitle() + " is " + (accept ? "accepted" : "rejected"));
+		LOGGER.log(Level.INFO,"Announcement with Title: " + announcement.getTitle() + " is " + (accept ? "accepted" : "rejected"));
 	}
 
 	public static void removeAnnouncement(Announcement[] announcements) throws IOException {
 		LOGGER.log(Level.INFO,ANNUM);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
-			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again \n2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
 				removeAnnouncement(announcements);
 			}
 			return;
 		}
-		System.out.println("1) Remove \n2) Cancel");
+		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
 		if (!remove) { return; }
 		Announcement announcement = announcements[announcementNumber - 1];
 		skankom.removeAnnouncement(announcement);
-		System.out.println("Announcement with Title: " + announcement.getTitle() + " is deleted");
+		LOGGER.log(Level.INFO,"Announcement with Title: " + announcement.getTitle() + " is deleted");
 	}
 
 	public static void addAnnouncement(Owner owner) throws IOException {
 		List<String> housingIds = owner.getOwnedHosuings();
 		if (housingIds.isEmpty()) {
-			System.out.println("No housings yet to advertise them.");
+			LOGGER.log(Level.INFO,"No housings yet to advertise them.");
 			return;
 		}
 		int counter = 1;
 		for (String housingId: housingIds) {
 			Housing housing = skankom.getHousing(housingId);
 			if (housing != null) {
-				System.out.println(counter + ") " + housing.toString());
+				LOGGER.log(Level.INFO,counter + ") " + housing.toString());
 			}
 			counter++;
 		}
-		System.out.println("Enter Hosuing Number:");
+		LOGGER.log(Level.INFO,"Enter Hosuing Number:");
 		int housingNumber = SakancomApp.scanInt();
 		if (housingNumber > housingIds.size()) {
-			System.out.println("The enetred number is not exist.\n1) Try Again \n2) Cancel");
+			LOGGER.log(Level.INFO,"The enetred number is not exist.\n1) Try Again \n2) Cancel");
 			int choice = SakancomApp.scanInt();
 			if (choice == 1) {
 				addAnnouncement(owner);
 			}
 			return;
 		}
-		System.out.println("Enter Title:");
+		LOGGER.log(Level.INFO,"Enter Title:");
 		String title = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter Description:");
+		LOGGER.log(Level.INFO,"Enter Description:");
 		String description = SakancomApp.getScanner().nextLine();
-		System.out.println("Enter Price:");
+		LOGGER.log(Level.INFO,"Enter Price:");
 		double price = SakancomApp.scanDouble();
-		System.out.println("Is electriciry and water enclusive:\n1) Yes\n2) No");
+		LOGGER.log(Level.INFO,"Is electriciry and water enclusive:\n1) Yes\n2) No");
 		boolean includesElectricityAndWater = SakancomApp.scanInt() == 1;
 		Announcement announcement = new Announcement(title, description, price, includesElectricityAndWater, owner.getId(), housingIds.get(housingNumber - 1));
 		skankom.addAnnouncement(announcement);
 		createAnnouncementDetails(announcement);
-		System.out.println("Adding Announcement Confirmation:\n1) Confirm \n2) Cancel");
+		LOGGER.log(Level.INFO,"Adding Announcement Confirmation:\n1) Confirm \n2) Cancel");
 		int choice = SakancomApp.scanInt();
 		if (choice != 1) {
 			skankom.removeAnnouncement(announcement);
@@ -300,7 +300,7 @@ public class AnnouncementManager {
 	}
 
 	public static void createAnnouncementDetails(Announcement announcement) throws IOException {
-		System.out.println("Choose one of the following options:\n1) Manage Services \n2) Manage Photos \n3) Finish");
+		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Manage Services \n2) Manage Photos \n3) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
@@ -314,7 +314,7 @@ public class AnnouncementManager {
 		case 3:
 			break;
 		default:
-			System.out.println("Wrong choice.\n1) Try Again 2) Finish");
+			LOGGER.log(Level.INFO,"Wrong choice.\n1) Try Again 2) Finish");
 			if (SakancomApp.scanInt() == 1) {
 				createAnnouncementDetails(announcement);
 			}
