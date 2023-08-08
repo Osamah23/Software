@@ -75,7 +75,7 @@ public class PhotoManager {
 		}
 		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
-		if (!remove) { return; }
+		if (Boolean.TRUE.equals(!remove)) { return; }
 		announcement.removePhoto(photoNumber - 1);
 		LOGGER.log(Level.INFO,"Your Photo deleted successfully");
 	}
