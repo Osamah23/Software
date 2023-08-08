@@ -83,10 +83,12 @@ public class PhotoManager {
 	public static void deletePhoto(Announcement announcement) throws IOException {
 		int photosCount = announcement.getPhotosCount();
 		if (photosCount == 0) {
-			LOGGER.log(Level.INFO,"No photos added yet to " + announcement.toString());
+			String y="No photos added yet to " + announcement.toString();
+			LOGGER.log(Level.INFO,y);
 			return;
 		}
-		LOGGER.log(Level.INFO,"There is " + photosCount + " photos in the announcement.");
+		String d="There is " + photosCount + " photos in the announcement.";
+		LOGGER.log(Level.INFO,d);
 		removePhoto(photosCount, announcement);
 	}
 }
