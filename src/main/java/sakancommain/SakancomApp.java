@@ -36,8 +36,7 @@ public class SakancomApp {
 			scanner.next();
 			LOGGER.log(Level.INFO,"Invalid double input. Please enter a double: ");
 		}
-		double number = scanner.nextDouble();
-		return number;
+		return scanner.nextDouble();
 	}
 
 	public static void entrance() throws IOException {
