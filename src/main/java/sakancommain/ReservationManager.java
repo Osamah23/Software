@@ -117,7 +117,7 @@ public class ReservationManager {
 		Boolean accept = SakancomApp.scanInt() == 1;
 		String tenantId = reservations.keySet().toArray(new String[0])[reservationNumber - 1];
 		String apartmentId = reservations.get(tenantId);
-		if (accept) {
+		if (Boolean.TRUE.equals(accept)) {
 			housing.addTenant(tenantId, apartmentId);
 		} else {
 			housing.removeReservation(tenantId);
