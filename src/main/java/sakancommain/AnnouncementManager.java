@@ -79,7 +79,7 @@ public class AnnouncementManager {
 	}
 	private static final String NOAN="No announcements to show";
 	public static void showAnnouncements(Tenant tenant) throws IOException {
-		ArrayList<Announcement> arrayList = skankom.getAcceptedAnnouncements();
+		List<Announcement> arrayList = skankom.getAcceptedAnnouncements();
 		Announcement[] announcements = arrayList.toArray(new Announcement[0]);
 		if (announcements.length == 0) {
 			LOGGER.log(Level.INFO,NOAN);
