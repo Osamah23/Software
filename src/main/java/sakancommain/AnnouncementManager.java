@@ -110,13 +110,14 @@ public class AnnouncementManager {
 			SakancomApp.entrance();
 		}
 	}
+	private static final String enter="The entered number is not exist.\n1) Try Again 2) Cancel";
 	private static final String annum="Enter Announcement Number:";
 	public static void chooseAnnouncement(Tenant tenant, Announcement[] announcements) throws IOException {
 		LOGGER.log(Level.INFO,annum);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
-			String n="The entered number is not exist.\n1) Try Again 2) Cancel";
-			LOGGER.log(Level.INFO,n);
+			
+			LOGGER.log(Level.INFO,enter);
 			if (SakancomApp.scanInt() == 1) {
 				chooseAnnouncement(tenant, announcements);
 			}
@@ -183,7 +184,7 @@ public class AnnouncementManager {
 		System.out.println("Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.length) {
-			System.out.println("The entered number is not exist.\n1) Try Again 2) Cancel");	
+			LOGGER.log(Level.INFO,enter);
 			if (SakancomApp.scanInt() == 1) {
 				chooseApartment(tenant, housing, apartments);
 			}
@@ -219,7 +220,7 @@ public class AnnouncementManager {
 		LOGGER.log(Level.INFO,annum);
 		int announcementNumber = SakancomApp.scanInt();
 		if (announcementNumber > announcements.length) {
-			System.out.println("The entered number is not exist.\n1) Try Again 2) Cancel");	
+			LOGGER.log(Level.INFO,enter);	
 			if (SakancomApp.scanInt() == 1) {
 				acceptRejectAnnouncement(announcements);
 			}
