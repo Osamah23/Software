@@ -57,7 +57,7 @@ public class ReservationManager {
 		}
 	}
 
-	public static void showAnnoucements(Owner owner, ArrayList<Housing> housings) throws IOException {
+	public static void showAnnoucements(Owner owner, List<Housing> housings) throws IOException {
 		LOGGER.log(Level.INFO,"Enter Housing Number:");
 		int housingNumber = SakancomApp.scanInt();
 		if (housingNumber > housings.size()) {
@@ -86,7 +86,7 @@ public class ReservationManager {
 		showReservationDetails(owner, housings, housing, reservations);
 	}
 
-	public static void showReservationDetails(Owner owner, ArrayList<Housing> housings, Housing housing, Map<String, String> reservations) throws IOException {
+	public static void showReservationDetails(Owner owner, List<Housing> housings, Housing housing, Map<String, String> reservations) throws IOException {
 		LOGGER.log(Level.INFO,"Choose one of the following options:\n1) Accept/Reject Reservation \n2) Return Back \n3) Finish");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
