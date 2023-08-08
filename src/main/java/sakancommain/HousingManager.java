@@ -71,7 +71,8 @@ public class HousingManager {
 		}
 		int counter = 1;
 		for (Housing housing: housings) {
-			LOGGER.log(Level.INFO,counter + ") " + housing.toString());
+			String t=counter + ") " + housing.toString();
+			LOGGER.log(Level.INFO,t);
 			String ownerId = housing.getOwnerId();
 			Owner owner = skankom.getOwner(ownerId);
 			if (owner != null) {
