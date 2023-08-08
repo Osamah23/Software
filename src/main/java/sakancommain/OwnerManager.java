@@ -1,9 +1,7 @@
 package sakancommain;
 
 import java.io.IOException;
-import java.util.*;
 import owner.*;
-import java.util.stream.*;
 
 
 public class OwnerManager {
