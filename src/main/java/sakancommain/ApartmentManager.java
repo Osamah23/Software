@@ -2,19 +2,22 @@ package sakancommain;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import owner.*;
 
 public class ApartmentManager {
 	private static Skankom skankom = Skankom.getInstance();
-
+	 private static final Logger LOGGER = Logger.getLogger(ApartmentManager.class.getName());
 	public static Apartment createApartment(Floor floor) throws IOException {
-		System.out.println("Enter Number of Bedrooms:");
+		LOGGER.log(Level.INFO,"Enter Number of Bedrooms:");
 		int numberOfBedrooms = SakancomApp.scanInt();
-		System.out.println("Enter Number of Bathrooms:");
+		LOGGER.log(Level.INFO,"Enter Number of Bathrooms:");
 		int numberOfBathrooms = SakancomApp.scanInt();
-		System.out.println("Does it has Balcony? \n1) Yes\n2) No");
+		LOGGER.log(Level.INFO,"Does it has Balcony? \n1) Yes\n2) No");
 		boolean hasBalcony = SakancomApp.scanInt() == 1;
-		System.out.println("Adding Apartment Confirmation:\n1) Confirm \n2) Cancel");
+		LOGGER.log(Level.INFO,"Adding Apartment Confirmation:\n1) Confirm \n2) Cancel");
 		int choice = SakancomApp.scanInt();
 		if (choice == 1) {
 			Apartment apartment = new Apartment( numberOfBathrooms, numberOfBedrooms, hasBalcony);
@@ -32,7 +35,7 @@ public class ApartmentManager {
 
 	public static ArrayList<Apartment> getApartments(Floor floor) {
 		if (floor.getApartments().isEmpty()) {
-			System.out.println("No apartments added yet to " + floor.toString());
+			LOGGER.log(Level.INFO,"No apartments added yet to " + floor.toString());
 			return null;
 		}
 		int counter = 1;
@@ -41,7 +44,7 @@ public class ApartmentManager {
 			Apartment apartment = skankom.getApartment(apartmentId);
 			if (apartment != null) {
 				apartments.add(apartment);
-				System.out.println(counter + ") " + apartment.toString());
+				LOGGER.log(Level.INFO,counter + ") " + apartment.toString());
 				counter++;
 			}
 		}
@@ -55,14 +58,14 @@ public class ApartmentManager {
 	}
 
 	public static void showApartmentDetails(ArrayList<Apartment> apartments) throws IOException {
-		System.out.println("Choose one of the following options: \n1) Show Apartment Details \n2) Return Back");
+		LOGGER.log(Level.INFO,"Choose one of the following options: \n1) Show Apartment Details \n2) Return Back");
 		int choice = SakancomApp.scanInt();
 		switch (choice) {
 		case 1:
-			System.out.println("Enter Apartment Number:");
+			LOGGER.log(Level.INFO,"Enter Apartment Number:");
 			int apartmentNumber = SakancomApp.scanInt();
 			if (apartmentNumber > apartments.size()) {
-				System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
+				LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again \n2) Cancel");
 				if (SakancomApp.scanInt() == 1) {
 					showApartmentDetails(apartments);
 				}
@@ -77,16 +80,16 @@ public class ApartmentManager {
 	}
 
 	public static String removeApartment(ArrayList<Apartment> apartments, Floor floor) throws IOException {
-		System.out.println("Enter Apartment Number:");
+		LOGGER.log(Level.INFO,"Enter Apartment Number:");
 		int apartmentNumber = SakancomApp.scanInt();
 		if (apartmentNumber > apartments.size()) {
-			System.out.println("The entered number is not exist.\n1) Try Again \n2) Cancel");
+			LOGGER.log(Level.INFO,"The entered number is not exist.\n1) Try Again \n2) Cancel");
 			if (SakancomApp.scanInt() == 1) {
 				return removeApartment(apartments, floor);
 			}
 			return null;
 		}
-		System.out.println("1) Remove \n2) Cancel");
+		LOGGER.log(Level.INFO,"1) Remove \n2) Cancel");
 		Boolean remove = SakancomApp.scanInt() == 1;
 		if (!remove) { return null; }
 		Apartment apartment = apartments.get(apartmentNumber - 1);
