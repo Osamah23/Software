@@ -1,7 +1,6 @@
 package sakancommain;
 
 import java.io.IOException;
-import java.util.*;
 import owner.*;
 
 public class TenantManager {
