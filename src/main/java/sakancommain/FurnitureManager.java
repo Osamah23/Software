@@ -53,7 +53,8 @@ public class FurnitureManager {
 			Furniture furniture = new Furniture(name, price, tenant.getId());
 			tenant.addFurnitureForSale(furniture);
 			skankom.addFurniture(furniture);
-			LOGGER.log(Level.INFO,"Furniture with Info: " + furniture.toString() + " is added to " + tenant.toString());
+			String b="Furniture with Info: " + furniture.toString() + " is added to " + tenant.toString();
+			LOGGER.log(Level.INFO,b);
 		}
 	}
 
